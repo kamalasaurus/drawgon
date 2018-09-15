@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+
+*.log
+npm-debug.log*
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env
+
+# compiled output
+dist/
+

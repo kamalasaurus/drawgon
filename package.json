@@ -1,0 +1,17 @@
+{
+  "name": "webdraw",
+  "version": "1.0.0",
+  "description": "https://developer.github.com/v3/guides/getting-started/#oauth",
+  "main": "main.js",
+  "scripts": {
+    "start": "live-server",
+    "build": "\"convert css and build service-worker list\"",
+    "test": "\"come up with something\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next"
+  }
+}
