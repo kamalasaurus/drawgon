@@ -1,7 +1,16 @@
 import m from '../../../node_modules/mithril/mithril.js';
 
-export default class Surface {
+export default class Canvas {
   constructor(opts) {
+
+    //TODO:  turn off anti-alias
+
+    this.clear = () => {
+      // clear canvas contents, erase signature data
+      this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      // this.value('');
+      return this;
+    };
 
     this.down = (e) => {
       // prevent screen drag, enable drawing
