@@ -8,6 +8,6 @@ export default class Clear extends Button {
       return this;
     }
 
-    super(context, this.onclick);
+    super(context, this.onclick, this.prototype.name);
   }
 }
