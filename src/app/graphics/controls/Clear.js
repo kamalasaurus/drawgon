@@ -4,7 +4,7 @@ import Button from './Button.js';
 export default class Clear extends Button {
   constructor(context) {
     this.onclick = () => {
-      context.clearRect(0, 0, context.width, context.height);
+      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
       return this;
     }
 
