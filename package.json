@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next"
+    "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next",
+    "pressure": "^2.1.2"
   }
 }

@@ -3,6 +3,12 @@ import Button from './Button.js';
 
 export default class LineWeight extends Button {
   constructor(context) {
-    super(context);
+    this.onclick = (e) => {
+      // display a slider to select line width
+      context.lineWidth = 5;
+      return this;
+    };
+
+    super(context, this.onclick, this.prototype.name);
   }
 }
