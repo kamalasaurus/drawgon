@@ -2,8 +2,8 @@
 
 ### TODO:
 
+- monkey-patch Pressure.js for es6 modules
 - Create enclosing "page" for canvas and buttons
-- Include pressure.js
 - Create fancy square vector brush
 - Script button modal behavior on click
 - Create forms for relevant buttons that set application state
