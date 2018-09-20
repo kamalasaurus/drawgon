@@ -18,41 +18,41 @@ export default class Canvas {
       this.tapped = true;
       return this;
     };
-  
+
     this.move = (e) => {
       e.preventDefault();
       if (!this.tapped) return;
-  
+
       // starting conditions
       var isTouch = e.type === 'touchmove';
       var isFirstTouch = (!Number.isFinite(this.prevX) || !Number.isFinite(this.prevY));
-      
+
       var rect = this.canvas.dom.getBoundingClientRect();
-  
+
       // position on screen
       var cX = isTouch ? e.touches[0].clientX : e.clientX;
       var cY = isTouch ? e.touches[0].clientY : e.clientY;
-  
+
       // previous position on canvas
       var pX = isFirstTouch ? x : this.prevX;
       var pY = isFirstTouch ? y : this.prevY;
-  
+
       // position on canvas, normalize for style size and declared size of canvas
       var x = (cX - rect.left) / (rect.right - rect.left) * this.canvas.dom.width;
       var y = (cY - rect.top) / (rect.bottom - rect.top) * this.canvas.dom.height;
-  
+
       // draw line from previous position to current position
       this.context.beginPath();
       this.context.moveTo(pX, pY);
       this.context.lineTo(x, y);
       this.context.stroke();
-  
+
       // set current value for the next previous value
       this.prevX = x;
       this.prevY = y;
       return this;
     };
-  
+
     this.up = (e) => {
       // disable drawing, clear conditions, write signature as image data in prop
       e.preventDefault();
@@ -72,13 +72,13 @@ export default class Canvas {
         onmousemove: this.move,
         onmouseup: this.up
       };
-  
+
       const touchEvents = {
         ontouchstart: this.down,
         ontouchmove: this.move,
         ontouchend: this.up
       };
-  
+
       return 'ontouchstart' in window ?
         touchEvents :
         mouseEvents;
@@ -91,7 +91,7 @@ export default class Canvas {
         this.conditionalEvents()
       )
     );
-    
+
     this.oncreate = (vnode) => {
       this.context = vnode.dom.getContext('2d');
       this.tapped  = false;
@@ -106,3 +106,4 @@ export default class Canvas {
 
   }
 }
+

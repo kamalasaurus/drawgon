@@ -3,6 +3,11 @@ import Button from './Button.js';
 
 export default class Clear extends Button {
   constructor(context) {
-    super(context);
+    this.onclick = () => {
+      context.clearRect(0, 0, context.width, context.height);
+      return this;
+    }
+
+    super(context, this.onclick);
   }
 }
