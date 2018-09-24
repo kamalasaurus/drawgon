@@ -25,22 +25,22 @@ export default class Canvas {
       if (!this.tapped) return;
 
       // starting conditions
-      var isTouch = e.type === 'touchmove';
-      var isFirstTouch = (!Number.isFinite(this.prevX) || !Number.isFinite(this.prevY));
+      const isTouch = e.type === 'touchmove';
+      const isFirstTouch = (!Number.isFinite(this.prevX) || !Number.isFinite(this.prevY));
 
-      var rect = this.canvas.dom.getBoundingClientRect();
+      const rect = this.canvas.dom.getBoundingClientRect();
 
       // position on screen
-      var cX = isTouch ? e.touches[0].clientX : e.clientX;
-      var cY = isTouch ? e.touches[0].clientY : e.clientY;
+      const cX = isTouch ? e.touches[0].clientX : e.clientX;
+      const cY = isTouch ? e.touches[0].clientY : e.clientY;
 
       // previous position on canvas
-      var pX = isFirstTouch ? x : this.prevX;
-      var pY = isFirstTouch ? y : this.prevY;
+      const pX = isFirstTouch ? x : this.prevX;
+      const pY = isFirstTouch ? y : this.prevY;
 
       // position on canvas, normalize for style size and declared size of canvas
-      var x = (cX - rect.left) / (rect.right - rect.left) * this.canvas.dom.width;
-      var y = (cY - rect.top) / (rect.bottom - rect.top) * this.canvas.dom.height;
+      const x = (cX - rect.left) / (rect.right - rect.left) * this.canvas.dom.width;
+      const y = (cY - rect.top) / (rect.bottom - rect.top) * this.canvas.dom.height;
 
       // draw line from previous position to current position
       this.context.beginPath();
