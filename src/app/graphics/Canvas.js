@@ -46,13 +46,14 @@ export default class Canvas {
       this.context.beginPath();
       this.context.moveTo(pX, pY);
       this.context.lineTo(x, y);
+      // TODO: move this to controls/LineWeight
+      this.context.lineWidth = 5 * this.force;
+
       this.context.stroke();
 
       // set current value for the next previous value
       this.prevX = x;
       this.prevY = y;
-
-      console.log(this.force);
 
       return this;
     };
