@@ -1,3 +1,15 @@
 canvas.surface:hover {
     cursor: pointer;
 }
+
+/*TODO: mobile-first stylesheet!!!*/
+
+div.button {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #ccc;
+  border: solid 1px white;
+}
+
