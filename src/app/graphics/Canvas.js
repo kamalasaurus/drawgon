@@ -1,4 +1,5 @@
 import m from '../../../node_modules/mithril/mithril.js';
+import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 
 export default class Canvas {
   constructor(opts) {
@@ -50,6 +51,9 @@ export default class Canvas {
       // set current value for the next previous value
       this.prevX = x;
       this.prevY = y;
+
+      console.log(this.force);
+
       return this;
     };
 
@@ -94,10 +98,18 @@ export default class Canvas {
 
     this.oncreate = (vnode) => {
       this.context = vnode.dom.getContext('2d');
+
+      this.force = 1;
       this.tapped  = false;
       this.isDrawn = false;
       this.prevX = null;
       this.prevY = null;
+
+      Pressure.set(vnode.dom, {
+        change: (force) => {
+          this.force = force;
+        }
+      });
     };
 
     this.view = (vnode) => {
