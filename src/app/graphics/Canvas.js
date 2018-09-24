@@ -34,13 +34,13 @@ export default class Canvas {
       const cX = isTouch ? e.touches[0].clientX : e.clientX;
       const cY = isTouch ? e.touches[0].clientY : e.clientY;
 
-      // previous position on canvas
-      const pX = isFirstTouch ? x : this.prevX;
-      const pY = isFirstTouch ? y : this.prevY;
-
       // position on canvas, normalize for style size and declared size of canvas
       const x = (cX - rect.left) / (rect.right - rect.left) * this.canvas.dom.width;
       const y = (cY - rect.top) / (rect.bottom - rect.top) * this.canvas.dom.height;
+
+      // previous position on canvas
+      const pX = isFirstTouch ? x : this.prevX;
+      const pY = isFirstTouch ? y : this.prevY;
 
       // draw line from previous position to current position
       this.context.beginPath();
