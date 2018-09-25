@@ -13,7 +13,21 @@ import Clear from './graphics/controls/Clear.js';
 
 export default function App(root) {
 
-  const context = {};
+  // might want to make state its own module
+  const DEFAULTS = {
+    brush: 'round',
+    color: '#000000',
+    opacity: 1,
+    lineWeight: 5
+  };
+
+  // ability to flatten to flattenedImage, blows away releveant history, but preserves image
+  // history object: {brush: type, color: col, opacity: o, lineWeight: lw, path: [sx,sy,dx,dy]}
+
+  let context = Object.assign({
+    flattenedImage: '',
+    history: []
+  }, DEFAULTS);
 
   m.route(root, '/', {
     '/': (new Container(null, [
