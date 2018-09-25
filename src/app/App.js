@@ -16,20 +16,18 @@ export default function App(root) {
   const context = {};
 
   m.route(root, '/', {
-    '/': (
-      new Container(null, [
-        (new Canvas(context)).view(),
-        (new Container('controls', [
-          (new BrushSelect(context)).view(),
-          (new ColorWheel(context)).view(),
-          (new LineWeight(context)).view(),
-          (new Undo(context)).view(),
-          (new Redo(context)).view(),
-          (new Save(context)).view(),
-          (new Clear(context)).view()
-        ])).view()
-      ])
-    )
+    '/': (new Container(null, [
+       m(new Canvas(context)),
+       m(new Container('controls', [
+         m(new BrushSelect(context)),
+         m(new ColorWheel(context)),
+         m(new LineWeight(context)),
+         m(new Undo(context)),
+         m(new Redo(context)),
+         m(new Save(context)),
+         m(new Clear(context))
+       ]))
+    ]))
   });
 };
 
