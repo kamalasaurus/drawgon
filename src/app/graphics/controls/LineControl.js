@@ -1,12 +1,12 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 import Button from './Button.js';
 
-export default class ColorWheel extends Button {
+export default class LineControl extends Button {
   constructor(context) {
     const onclick = (e) => {
-      // display sunflower colorwheel!
-      // TODO: gradient strokes
-      context.strokeStyle = "#000000";
+      // display a slider to select line width
+      context.lineWidth = 5;
+      context.opacity = 1;
       return this;
     };
 
