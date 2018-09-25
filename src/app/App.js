@@ -26,7 +26,7 @@ export default function App(root) {
           (new Undo(context)).view(),
           (new Redo(context)).view(),
           (new Save(context)).view(),
-          (new Clear(context).view())
+          (new Clear(context)).view()
         ])).view()
       ])
     )
