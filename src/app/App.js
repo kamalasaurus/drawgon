@@ -18,16 +18,16 @@ export default function App(root) {
   m.route(root, '/', {
     '/': (
       new Container(null, [
-        (new Canvas()),
+        (new Canvas()).view(),
         (new Container('controls', [
-          (new BrushSelect()),
-          (new ColorWheel()),
-          (new LineWeight()),
-          (new Undo()),
-          (new Redo()),
-          (new Save()),
-          (new Clear())
-        ]))
+          (new BrushSelect()).view(),
+          (new ColorWheel()).view(),
+          (new LineWeight()).view(),
+          (new Undo()).view(),
+          (new Redo()).view(),
+          (new Save()).view(),
+          (new Clear().view())
+        ])).view()
       ])
     )
   });
