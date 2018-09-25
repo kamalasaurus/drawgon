@@ -69,9 +69,6 @@ export default class Canvas {
     };
 
     this.conditionalEvents = () => {
-      // plug in pressure.js here
-      // use declarative syntax to avoid the hoisting problem :/
-
       const mouseEvents = {
         onmousedown: this.down,
         onmousemove: this.move,
@@ -90,9 +87,14 @@ export default class Canvas {
     };
 
     this.canvas = m(
-      'canvas.surface[width="400"][height="250"]',
+      'canvas',
       Object.assign(
-        { id: 'surface'},
+        {
+          id: 'surface',
+          class: 'surface',
+          width: '400',
+          height: '400'
+        },
         this.conditionalEvents()
       )
     );

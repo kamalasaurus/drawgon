@@ -1,4 +1,6 @@
 import m from '../../node_modules/mithril/mithril.js';
+
+import Container from './Container.js';
 import Canvas from './graphics/Canvas.js';
 
 // control buttons //////////////////////////////////////////////////////
@@ -14,21 +16,20 @@ import Clear from './graphics/controls/Clear.js';
 export default function App(root) {
   // initialize webassembly either here or in a double fancy canvas module
   m.route(root, '/', {
-    '/': new Canvas()
-  });
-  m.route(root, '/', {
-    '/': m('div.container', [
-      (new Canvas()),
-      m('div.controls', [
-        (new BrushSelect()),
-        (new ColorWheel()),
-        (new LineWeight()),
-        (new Undo()),
-        (new Redo()),
-        (new Save()),
-        (new Clear())
+    '/': (
+      new Container(null, [
+        (new Canvas()),
+        (new Container('controls', [
+          (new BrushSelect()),
+          (new ColorWheel()),
+          (new LineWeight()),
+          (new Undo()),
+          (new Redo()),
+          (new Save()),
+          (new Clear())
+        ]))
       ])
-    ])
+    )
   });
 };
 

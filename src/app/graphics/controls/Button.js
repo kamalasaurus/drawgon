@@ -3,15 +3,16 @@ import m from '../../../../node_modules/mithril/mithril.js';
 export default class Button {
   constructor(context, onclick, classname) {
 
-    let name = classname ? '.'.concat(classname) : '';
+    const name = classname ? ' '.concat(classname) : '';
 
     this.onclick = (e) => {
       e.preventDefault();
-      console.log(`clicked ${classname || this.prototype.name}`);
+      console.log(`clicked ${classname || 'Button'}`);
     };
 
     this.view = (vnode) => {
-      return m(`div.button${name}`, {
+      return m('div', {
+        class: `button${name}`,
         onclick: (onclick || this.onclick)
       });
     };

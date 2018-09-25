@@ -3,11 +3,11 @@ import Button from './Button.js';
 
 export default class Redo extends Button {
   constructor(context) {
-    this.onclick = (e) => {
+    const onclick = (e) => {
       // reattach motions to memory stack
       return this;
     };
 
-    super(context, this.onclick, this.prototype.name);
+    super(context, onclick, 'Redo');
   }
 }
