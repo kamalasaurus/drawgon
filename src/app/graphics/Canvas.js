@@ -2,7 +2,7 @@ import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 
 export default class Canvas {
-  constructor(opts) {
+  constructor(context) {
 
     //TODO:  turn off anti-alias
 
