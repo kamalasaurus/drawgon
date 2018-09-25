@@ -1,7 +1,7 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 
 export default class Button {
-  constructor(context, onclick, classname) {
+  constructor(classname, imagesrc, onclick) {
 
     const name = classname ? ' '.concat(classname) : '';
 
@@ -14,7 +14,9 @@ export default class Button {
       return m('div', {
         class: `button${name}`,
         onclick: (onclick || this.onclick)
-      });
+      }, [
+        m('img', {src: `../../../icons/${imagesrc}`, class: 'icon'})
+      ]);
     };
 
   }

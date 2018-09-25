@@ -9,6 +9,6 @@ export default class BrushSelect extends Button {
       return this;
     };
 
-    super(context, onclick, 'BrushSelect');
+    super(this.name, '', onclick);
   }
 }

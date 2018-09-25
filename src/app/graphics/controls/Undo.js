@@ -8,6 +8,6 @@ export default class Undo extends Button {
       return this;
     };
 
-    super(context, onclick, 'Undo');
+    super(this.name, '', onclick);
   }
 }

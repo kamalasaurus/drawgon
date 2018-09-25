@@ -9,6 +9,6 @@ export default class LineWeight extends Button {
       return this;
     };
 
-    super(context, onclick, 'LineWeight');
+    super(this.name, '', onclick);
   }
 }

@@ -8,6 +8,6 @@ export default class Redo extends Button {
       return this;
     };
 
-    super(context, onclick, 'Redo');
+    super(this.name, '', onclick);
   }
 }

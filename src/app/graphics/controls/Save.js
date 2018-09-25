@@ -9,6 +9,6 @@ export default class Save extends Button {
       return this;
     };
 
-    super(context, onclick, 'Save');
+    super(this.name, '', onclick);
   }
 }
