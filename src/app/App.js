@@ -5,7 +5,7 @@ import Canvas from './graphics/Canvas.js';
 
 import BrushSelect from './graphics/controls/BrushSelect.js';
 import ColorWheel from './graphics/controls/ColorWheel.js';
-import LineWeight from './graphics/controls/LineWeight.js';
+import LineWidth from './graphics/controls/LineWidth.js';
 import Undo from './graphics/controls/Undo.js';
 import Redo from './graphics/controls/Redo.js';
 import Save from './graphics/controls/Save.js';
@@ -18,11 +18,11 @@ export default function App(root) {
     brush: 'round',
     color: '#000000',
     opacity: 1,
-    lineWeight: 5
+    lineWidth: 5
   };
 
   // ability to flatten to flattenedImage, blows away releveant history, but preserves image
-  // history object: {brush: type, color: col, opacity: o, lineWeight: lw, path: [sx,sy,dx,dy]}
+  // history object: {brush: type, color: col, opacity: o, lineWidth: lw, path: [sx,sy,dx,dy]}
 
   let context = Object.assign({
     flattenedImage: '',
@@ -35,7 +35,7 @@ export default function App(root) {
       m(new Container('controls', [
         m(new BrushSelect(context)),
         m(new ColorWheel(context)),
-        m(new LineWeight(context)),
+        m(new LineWidth(context)),
         m(new Undo(context)),
         m(new Redo(context)),
         m(new Save(context)),
