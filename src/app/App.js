@@ -17,16 +17,16 @@ export default function App(root) {
 
   m.route(root, '/', {
     '/': (new Container(null, [
-       m(new Canvas(context)),
-       m(new Container('controls', [
-         m(new BrushSelect(context)),
-         m(new ColorWheel(context)),
-         m(new LineWeight(context)),
-         m(new Undo(context)),
-         m(new Redo(context)),
-         m(new Save(context)),
-         m(new Clear(context))
-       ]))
+      m(new Canvas(context)),
+      m(new Container('controls', [
+        m(new BrushSelect(context)),
+        m(new ColorWheel(context)),
+        m(new LineWeight(context)),
+        m(new Undo(context)),
+        m(new Redo(context)),
+        m(new Save(context)),
+        m(new Clear(context))
+      ]))
     ]))
   });
 };
