@@ -10,6 +10,6 @@ export default class ColorWheel extends Button {
       return this;
     };
 
-    super(this.name, '', onclick);
+    super(this.constructor.name, onclick);
   }
 }

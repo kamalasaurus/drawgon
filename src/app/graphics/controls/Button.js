@@ -1,21 +1,22 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 
 export default class Button {
-  constructor(classname, imagesrc, onclick) {
+  constructor(name, onclick) {
 
-    const name = classname ? ' '.concat(classname) : '';
+    const classname = name ? ' '.concat(name) : '';
+    const imgname = name ? name.concat('.png') : '';
 
     this.onclick = (e) => {
       e.preventDefault();
-      console.log(`clicked ${classname || 'Button'}`);
+      console.log(`clicked ${name || 'Button'}`);
     };
 
     this.view = (vnode) => {
       return m('div', {
-        class: `button${name}`,
+        class: `button${classname}`,
         onclick: (onclick || this.onclick)
       }, [
-        m('img', {src: `../../../icons/${imagesrc}`, class: 'icon'})
+        m('img', {src: `../../../icons/${imgname}`, class: 'icon'})
       ]);
     };
 
