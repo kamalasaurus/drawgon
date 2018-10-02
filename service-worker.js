@@ -13,14 +13,11 @@ const PRECACHE_URLS = [
   "mstile-150x150.png",
   "safari-pinned-tab.svg",
   "service-worker.js",
-  "shader-list.js",
-  "wasm-list.js",
   "src/app/App.js",
   "src/app/components/Canvas.js",
-  "src/app/components/glsl/surface.vert",
-  "src/app/components/glsl/texture.frag",
   "src/style.css",
-  "node_modules/mithril/mithril.js"
+  "node_modules/mithril/mithril.js",
+  "node_modules/pressure/dist/pressure.js"
 ]
 
 const PRECACHE = 'version1';
