@@ -16,9 +16,9 @@ const PRECACHE_URLS = [
   "shader-list.js",
   "wasm-list.js",
   "src/app/App.js",
-  "src/app/graphics/Canvas.js",
-  "src/app/graphics/glsl/surface.vert",
-  "src/app/graphics/glsl/texture.frag",
+  "src/app/components/Canvas.js",
+  "src/app/components/glsl/surface.vert",
+  "src/app/components/glsl/texture.frag",
   "src/style.css",
   "node_modules/mithril/mithril.js"
 ]

@@ -2,15 +2,15 @@ import m from '../../node_modules/mithril/mithril.js';
 
 import Context from './state/Context.js';
 import Container from './Container.js';
-import Canvas from './graphics/Canvas.js';
+import Canvas from './components/Canvas.js';
 
-import Brush from './graphics/buttons/Brush.js';
-import Color from './graphics/buttons/Color.js';
-import Line from './graphics/buttons/Line.js';
-import Undo from './graphics/buttons/Undo.js';
-import Redo from './graphics/buttons/Redo.js';
-import Save from './graphics/buttons/Save.js';
-import Clear from './graphics/buttons/Clear.js';
+import Brush from './components/buttons/Brush.js';
+import Color from './components/buttons/Color.js';
+import Line from './components/buttons/Line.js';
+import Undo from './components/buttons/Undo.js';
+import Redo from './components/buttons/Redo.js';
+import Save from './components/buttons/Save.js';
+import Clear from './components/buttons/Clear.js';
 
 export default function App(root) {
 

@@ -1,8 +1,8 @@
 export default {
   "vert": [
-    "src/app/graphics/glsl/surface.vert"
+    "src/app/components/glsl/surface.vert"
   ],
   "frag": [
-    "src/app/graphics/glsl/texture.frag"
+    "src/app/components/glsl/texture.frag"
   ]
 }
