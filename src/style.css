@@ -7,7 +7,7 @@ html, body, div.container {
   max-height: 100%;
 }
 
-div.container {
+div.layout {
   background-color: rgb(159, 179, 190);
 }
 
