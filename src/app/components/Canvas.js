@@ -46,7 +46,6 @@ export default class Canvas {
       this.context.beginPath();
       this.context.moveTo(pX, pY);
       this.context.lineTo(x, y);
-      console.log(this.force, context.state.lineWidth);
       this.context.lineWidth = context.state.lineWidth * this.force;
       this.context.stroke();
 
