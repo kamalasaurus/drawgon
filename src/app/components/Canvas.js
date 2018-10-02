@@ -6,6 +6,8 @@ export default class Canvas {
 
     // private
     const clear = () => {
+      // TODO: replace w/ clearRect and make a background div with white or
+      // checkerboard pattern.  This is necessary for a useful eraser and layers!
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       // clearRect actually makes it transparent

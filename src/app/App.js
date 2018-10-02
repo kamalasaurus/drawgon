@@ -7,8 +7,11 @@ import Canvas from './components/Canvas.js';
 import Brush from './components/controls/Brush.js';
 import Color from './components/controls/Color.js';
 import Line from './components/controls/Line.js';
+import Eraser from './components/controls/Eraser.js';
+import Zoom from './components/controls/Zoom.js';
 import Undo from './components/controls/Undo.js';
 import Redo from './components/controls/Redo.js';
+import Rotate from './components/controls/Rotate.js';
 import Save from './components/controls/Save.js';
 import Clear from './components/controls/Clear.js';
 
@@ -32,8 +35,11 @@ export default function App(root) {
         m(new Brush(appState)),
         m(new Color(appState)),
         m(new Line(appState)),
+        m(new Eraser(appState)),
+        m(new Zoom(appState)),
         m(new Undo(appState)),
         m(new Redo(appState)),
+        m(new Rotate(appState)),
         m(new Save(appState)),
         m(new Clear(appState))
       ]))
