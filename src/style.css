@@ -19,11 +19,6 @@ canvas.surface {
   cursor: url(app/icons/Cursor.png) 0 16, auto;
 }
 
-/*canvas.surface:hover {*/
-  /*cursor: auto;*/
-  /*[>cursor: url('./app/icons/Cursor.png');<]*/
-/*}*/
-
 /*TODO: mobile-first stylesheet!!!*/
 
 div.button {
