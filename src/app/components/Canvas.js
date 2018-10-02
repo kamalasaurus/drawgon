@@ -46,13 +46,14 @@ export default class Canvas {
       this.context.beginPath();
       this.context.moveTo(pX, pY);
       this.context.lineTo(x, y);
-      this.context.lineWidth = context.lineWidth * this.force;
+      console.log(this.force, context.state.lineWidth);
+      this.context.lineWidth = context.state.lineWidth * this.force;
       this.context.stroke();
 
-      context.history.push({
-        brush: context.brush,
-        color: context.color, //TODO: get live color
-        opacity: context.opacity, //TODO: get live opacity
+      context.pushState({
+        brush: context.state.brush,
+        color: context.state.color, //TODO: get live color
+        opacity: context.state.opacity, //TODO: get live opacity
         lineWidth: this.context.lineWidth,
         path: [pX, pY, x, y]
       });
@@ -113,6 +114,8 @@ export default class Canvas {
       this.isDrawn = false;
       this.prevX = null;
       this.prevY = null;
+
+      context.assignCanvas(this.canvas);
 
       Pressure.set(vnode.dom, {
         change: (force) => {

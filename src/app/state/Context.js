@@ -14,6 +14,8 @@ export default class Context {
 
     let canvas = null;
 
+    this.state = state;
+
     this.restoreDefaults = () => {
       state = Object.assign(state, DEFAULTS);
     };
@@ -25,6 +27,10 @@ export default class Context {
 
     this.assignCanvas = (c) => {
       canvas = c;
+    };
+
+    this.pushState = (s) => {
+      state.history.push(s);
     };
 
     this.restoreDefaults();
