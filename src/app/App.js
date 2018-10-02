@@ -1,6 +1,6 @@
 import m from '../../node_modules/mithril/mithril.js';
 
-import Context from './state/AppState.js';
+import AppState from './state/AppState.js';
 import Container from './Container.js';
 import Canvas from './components/Canvas.js';
 
@@ -13,11 +13,6 @@ import Save from './components/buttons/Save.js';
 import Clear from './components/buttons/Clear.js';
 
 export default function App(root) {
-
-  // might want to make state its own module
-
-  // ability to flatten to flattenedImage, blows away releveant history, but preserves image
-  // history object: {brush: type, color: col, opacity: o, lineWidth: lw, path: [sx,sy,dx,dy]}
 
   const appState = new AppState();
 
