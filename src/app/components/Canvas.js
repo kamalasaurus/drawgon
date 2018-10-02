@@ -2,25 +2,24 @@ import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 
 export default class Canvas {
-  constructor(context) {
+  constructor(appState) {
 
-    //TODO:  turn off anti-alias
-
-    this.clear = () => {
+    // private
+    const clear = () => {
       // clear canvas contents, erase signature data
       this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       // this.value('');
       return this;
     };
 
-    this.down = (e) => {
+    const down = (e) => {
       // prevent screen drag, enable drawing
       e.preventDefault();
       this.tapped = true;
       return this;
     };
 
-    this.move = (e) => {
+    const move = (e) => {
       e.preventDefault();
       if (!this.tapped) return;
 
@@ -46,13 +45,13 @@ export default class Canvas {
       this.context.beginPath();
       this.context.moveTo(pX, pY);
       this.context.lineTo(x, y);
-      this.context.lineWidth = context.state.lineWidth * this.force;
+      this.context.lineWidth = appState.state.lineWidth * this.force;
       this.context.stroke();
 
-      context.pushState({
-        brush: context.state.brush,
-        color: context.state.color, //TODO: get live color
-        opacity: context.state.opacity, //TODO: get live opacity
+      appState.pushState({
+        brush: appState.state.brush,
+        color: appState.state.color, //TODO: get live color
+        opacity: appState.state.opacity, //TODO: get live opacity
         lineWidth: this.context.lineWidth,
         path: [pX, pY, x, y]
       });
@@ -64,7 +63,7 @@ export default class Canvas {
       return this;
     };
 
-    this.up = (e) => {
+    const up = (e) => {
       // disable drawing, clear conditions, write signature as image data in prop
       e.preventDefault();
       this.tapped = false;
@@ -74,23 +73,26 @@ export default class Canvas {
       return this;
     };
 
-    this.conditionalEvents = () => {
+    const conditionalEvents = () => {
       const mouseEvents = {
-        onmousedown: this.down,
-        onmousemove: this.move,
-        onmouseup: this.up
+        onmousedown: down,
+        onmousemove: move,
+        onmouseup: up
       };
 
       const touchEvents = {
-        ontouchstart: this.down,
-        ontouchmove: this.move,
-        ontouchend: this.up
+        ontouchstart: down,
+        ontouchmove: move,
+        ontouchend: up
       };
 
       return 'ontouchstart' in window ?
         touchEvents :
         mouseEvents;
     };
+
+    // public
+    this.clear = clear;
 
     this.canvas = m(
       'canvas',
@@ -101,7 +103,7 @@ export default class Canvas {
           width: '400',
           height: '400'
         },
-        this.conditionalEvents()
+        conditionalEvents()
       )
     );
 
@@ -114,7 +116,7 @@ export default class Canvas {
       this.prevX = null;
       this.prevY = null;
 
-      context.assignCanvas(this.canvas);
+      appState.assignCanvas(this);
 
       Pressure.set(vnode.dom, {
         change: (force) => {

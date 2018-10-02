@@ -1,6 +1,6 @@
 import m from '../../node_modules/mithril/mithril.js';
 
-import Context from './state/Context.js';
+import Context from './state/AppState.js';
 import Container from './Container.js';
 import Canvas from './components/Canvas.js';
 
@@ -19,19 +19,19 @@ export default function App(root) {
   // ability to flatten to flattenedImage, blows away releveant history, but preserves image
   // history object: {brush: type, color: col, opacity: o, lineWidth: lw, path: [sx,sy,dx,dy]}
 
-  const context = new Context();
+  const appState = new AppState();
 
   m.route(root, '/', {
     '/': (new Container('layout', [
-      m(new Canvas(context)),
+      m(new Canvas(appState)),
       m(new Container('controls', [
-        m(new Brush(context)),
-        m(new Color(context)),
-        m(new Line(context)),
-        m(new Undo(context)),
-        m(new Redo(context)),
-        m(new Save(context)),
-        m(new Clear(context))
+        m(new Brush(appState)),
+        m(new Color(appState)),
+        m(new Line(appState)),
+        m(new Undo(appState)),
+        m(new Redo(appState)),
+        m(new Save(appState)),
+        m(new Clear(appState))
       ]))
     ]))
   });

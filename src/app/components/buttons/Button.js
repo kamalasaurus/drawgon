@@ -6,6 +6,8 @@ export default class Button {
     const classname = name ? ' '.concat(name) : '';
     const imgname = name ? name.concat('.png') : '';
 
+    this.active = false;
+
     this.onclick = (e) => {
       e.preventDefault();
       console.log(`clicked ${name || 'Button'}`);
@@ -22,3 +24,4 @@ export default class Button {
 
   }
 }
+
