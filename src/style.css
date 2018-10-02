@@ -22,7 +22,7 @@ canvas.surface {
 }
 
 canvas.surface.eraser {
-  cursor: url(app/icons/cursors/Eraser.png) 0 16, auto;
+  cursor: url(app/icons/cursors/Eraser.png) 0 24, auto;
 }
 
 div.button {
