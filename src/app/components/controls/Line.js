@@ -1,5 +1,5 @@
 import m from '../../../../node_modules/mithril/mithril.js';
-import Button from './Button.js';
+import Button from '../Button.js';
 
 export default class Line extends Button {
   constructor(appState) {
