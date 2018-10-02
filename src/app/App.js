@@ -16,6 +16,10 @@ export default function App(root) {
 
   const appState = new AppState({A: 4, dpi: 300});
 
+  // attach keyboard shortcuts here. Might have to
+  // instantiate buttons outside router to call
+  // functions?  No, just, call them from appState
+
   m.route(root, '/', {
     '/': (new Container('layout', [
       m(new Canvas(appState)),

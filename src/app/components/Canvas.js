@@ -49,6 +49,7 @@ export default class Canvas {
       this.context.lineWidth = appState.state.lineWidth * this.force;
       this.context.stroke();
 
+      // assign action to history
       appState.pushState({
         brush: appState.state.brush,
         color: appState.state.color, //TODO: get live color
@@ -103,7 +104,7 @@ export default class Canvas {
           class: 'surface',
           width: appState.state.width,
           height: appState.state.height,
-          style: '--aspect-ratio: 1/1.414;' // TODO: A3 and A4 have the same aspect ratio!
+          style: '--aspect-ratio: 1.414/1;' // TODO: A3 and A4 have the same aspect ratio!
         },
         conditionalEvents()
       )
