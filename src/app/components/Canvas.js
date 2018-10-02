@@ -123,6 +123,8 @@ export default class Canvas {
       this.prevX = null;
       this.prevY = null;
 
+      // TODO: only leak relevant functionality to appState
+      // change appState name to appController
       appState.assignCanvas(this);
 
       Pressure.set(vnode.dom, {
