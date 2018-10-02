@@ -100,8 +100,8 @@ export default class Canvas {
         {
           id: 'surface',
           class: 'surface',
-          width: '400',
-          height: '400'
+          width: appState.state.width,
+          height: appState.state.height
         },
         conditionalEvents()
       )

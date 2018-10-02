@@ -1,11 +1,15 @@
 export default class AppState {
-  constructor() {
+  constructor(/*width, height*/) {
     const DEFAULTS = {
       brush: 'round',
       color: '#000000',
       opacity: 1,
-      lineWidth: 5
+      lineWidth: 5,
+      width: 3508,
+      height: 2480
     };
+
+    // w/h is A4, 3508 x 4961 for A3 @ 300ppi
 
     let state = {
       flattenedImage: '',
