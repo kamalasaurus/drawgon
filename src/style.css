@@ -1,6 +1,6 @@
 /*TODO: mobile-first stylesheet!!!*/
 
-html, body, div.container {
+html, body, div.layout {
   margin: 0;
   padding: 0;
   max-width: 100%;
