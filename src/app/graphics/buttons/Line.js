@@ -1,7 +1,7 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 import Button from './Button.js';
 
-export default class LineControl extends Button {
+export default class Line extends Button {
   constructor(context) {
     const onclick = (e) => {
       // display a slider to select line width
@@ -10,6 +10,6 @@ export default class LineControl extends Button {
       return this;
     };
 
-    super(this.constructor.name, onclick);
+    super('Line', onclick);
   }
 }

@@ -1,18 +1,31 @@
 export default class Context {
-  constructor(/*canvascontext*/) {
-    const DEFAULTS = {}
+  constructor() {
+    const DEFAULTS = {
+      brush: 'round',
+      color: '#000000',
+      opacity: 1,
+      lineWidth: 5
+    };
 
-    this.flattenedImage = '';
-    this.history = [];
+    let state = {
+      flattenedImage: '',
+      history: []
+    };
+
+    let canvas = null;
 
     this.restoreDefaults = () => {
-      this = Object.assign(this, DEFAULTS);
+      state = Object.assign(state, DEFAULTS);
     };
 
     this.flattenHistory = () => {
-      this.flattenHistory = 'canvascontext.toImageURL';
-      this.history = [];
-    }
+      state.flattenImage = 'canvascontext.toImageURL';
+      state.history = [];
+    };
+
+    this.assignCanvas = (c) => {
+      canvas = c;
+    };
 
     this.restoreDefaults();
   }

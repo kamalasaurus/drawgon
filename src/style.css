@@ -5,11 +5,19 @@ canvas.surface:hover {
 /*TODO: mobile-first stylesheet!!!*/
 
 div.button {
-  width: 150px;
-  height: 150px;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
   display: inline-block;
   cursor: pointer;
   background-color: #ccc;
   border: solid 1px white;
+  vertical-align: middle;
+  text-align: center;
+}
+
+div.button img.icon {
+  display: inline-block;
+  padding-top: 12.5px;
 }
 

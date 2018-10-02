@@ -1,13 +1,13 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 import Button from './Button.js';
 
-export default class Redo extends Button {
+export default class Clear extends Button {
   constructor(context) {
     const onclick = (e) => {
-      // reattach motions to memory stack
+      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
       return this;
-    };
+    }
 
-    super(this.constructor.name, onclick);
+    super('Clear', onclick);
   }
 }

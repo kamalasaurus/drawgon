@@ -1,14 +1,13 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 import Button from './Button.js';
 
-export default class BrushSelect extends Button {
+export default class Undo extends Button {
   constructor(context) {
     const onclick = (e) => {
-      // display brush selection buttons
-      // interact with context appropriately
+      // pop last movement off memory stack, redraw
       return this;
     };
 
-    super(this.constructor.name, onclick);
+    super('Undo', onclick);
   }
 }

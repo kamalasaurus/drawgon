@@ -16,7 +16,7 @@ export default class Button {
         class: `button${classname}`,
         onclick: (onclick || this.onclick)
       }, [
-        m('img', {src: `../../../icons/${imgname}`, class: 'icon'})
+        m('img', {src: `./src/app/icons/${imgname}`, class: 'icon'})
       ]);
     };
 
