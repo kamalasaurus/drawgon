@@ -16,11 +16,13 @@ canvas.surface {
   max-width: 100vw;
   max-height: 100vh;
   height: calc(100% / (var(--aspect-ratio)));
+  cursor: url(app/icons/Cursor.png) 0 16, auto;
 }
 
-canvas.surface:hover {
-  cursor: pointer;
-}
+/*canvas.surface:hover {*/
+  /*cursor: auto;*/
+  /*[>cursor: url('./app/icons/Cursor.png');<]*/
+/*}*/
 
 /*TODO: mobile-first stylesheet!!!*/
 
