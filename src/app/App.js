@@ -14,7 +14,7 @@ import Clear from './components/buttons/Clear.js';
 
 export default function App(root) {
 
-  const appState = new AppState(/*width, height*/);
+  const appState = new AppState({A: 4, dpi: 300});
 
   m.route(root, '/', {
     '/': (new Container('layout', [

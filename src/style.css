@@ -1,13 +1,18 @@
 html, body, div.container {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.container {
+  background-color: rgb(159, 179, 190);
 }
 
 canvas.surface {
   position: relative;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 canvas.surface:hover {

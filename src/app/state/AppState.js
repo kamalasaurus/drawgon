@@ -1,15 +1,25 @@
 export default class AppState {
-  constructor(/*width, height*/) {
+  constructor({A, dpi}) {
+
+    // currently only supports A-series papers, change base length for B-series
+    // https://www.prepressure.com/library/paper-size/din-a3
+    // https://en.wikipedia.org/wiki/Paper_size#Overview:_ISO_paper_sizes
+    // aSize: [0, 10] dpi: 72, 300
+
     const DEFAULTS = {
       brush: 'round',
       color: '#000000',
       opacity: 1,
-      lineWidth: 5,
-      width: 3508,
-      height: 2480
+      lineWidth: 5
     };
 
-    // w/h is A4, 3508 x 4961 for A3 @ 300ppi
+    // runs a couple pixels large from what the internet round numbers are
+    const dimensions = (aSize, dpi) => {
+      const αA = dpi * 39.3701 * (2 ** (1/4)); // 39.3701in == 1000mm
+      const width = Math.floor(αA * (2 ** (-(aSize + 1) / 2)));
+      const height = Math.floor(αA * (2 ** (-aSize / 2)));
+      return {width, height}
+    };
 
     let state = {
       flattenedImage: '',
@@ -18,10 +28,11 @@ export default class AppState {
 
     let canvas = null;
 
+    // public
     this.state = state;
 
     this.restoreDefaults = () => {
-      state = Object.assign(state, DEFAULTS);
+      state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
       return this;
     };
 

@@ -101,7 +101,8 @@ export default class Canvas {
           id: 'surface',
           class: 'surface',
           width: appState.state.width,
-          height: appState.state.height
+          height: appState.state.height,
+          style: '--aspect-ratio: 1/1.414;' // TODO: A3 and A4 have the same aspect ratio!
         },
         conditionalEvents()
       )
