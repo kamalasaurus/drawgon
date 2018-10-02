@@ -6,8 +6,9 @@ export default class Canvas {
 
     // private
     const clear = () => {
-      // clear canvas contents, erase signature data
-      this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      this.context.fillStyle = 'white';
+      this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      // clearRect actually makes it transparent
       // this.value('');
       return this;
     };
@@ -110,6 +111,8 @@ export default class Canvas {
 
     this.oncreate = (vnode) => {
       this.context = vnode.dom.getContext('2d');
+      this.context.fillStyle = 'white';
+      this.context.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
 
       this.force = 1;
       this.tapped  = false;
