@@ -40,7 +40,7 @@ export default class Controller {
     };
 
     this.removeEventListener = (name, callback) => {
-      const arr = (events[name] || []).slice();
+      const arr = events[name] || [];
       events[name] = arr.reduce((arr, cb) => {
         return cb != callback ? arr.concat(cb) : arr;
       }, []);
