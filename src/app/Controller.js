@@ -34,21 +34,26 @@ export default class Controller {
 
     const events = {};
 
-    this.addEventListener = (name, callback) => {
+    this.addEventListener = (name = '', callback) => {
+      name = name.toLowerCase();
       const arr = events[name] || [];
-      events[name] = arr.concat(callback);
+      if (callback)
+        events[name] = arr.concat(callback);
     };
 
-    this.removeEventListener = (name, callback) => {
+    this.removeEventListener = (name = '', callback) => {
+      name = name.toLowerCase();
       const arr = events[name] || [];
       events[name] = arr.reduce((arr, cb) => {
         return cb != callback ? arr.concat(cb) : arr;
       }, []);
     };
 
-    this.dispatchEvent = (name, ...args) => {
+    this.dispatchEvent = (name = '', ...args) => {
+      name = name.toLowerCase();
       const call = (cb) => {
-        if ('function' === typeof cb) cb({name, args});
+        if ('function' === typeof cb)
+          cb({name, args});
       };
       events[name].forEach(call);
     };
