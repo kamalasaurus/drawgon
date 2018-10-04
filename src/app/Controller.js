@@ -44,7 +44,7 @@ export default class Controller {
       events[name] = arr.splice(arr.indexOf(callback), 1), arr;
     };
 
-    this.dispatch = (name, ...args) => {
+    this.dispatchEvent = (name, ...args) => {
       const call = (cb) => cb({name, args});
       events[name].forEach(call);
     };
