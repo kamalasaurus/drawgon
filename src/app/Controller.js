@@ -35,13 +35,15 @@ export default class Controller {
 
     // public
     this.addEventListener = (name, callback) => {
-      const arr = (events[name] || []).slice();
+      const arr = events[name] || [];
       events[name] = arr.concat(callback);
     };
 
     this.removeEventListener = (name, callback) => {
       const arr = (events[name] || []).slice();
-      events[name] = arr.splice(arr.indexOf(callback), 1), arr;
+      events[name] = arr.reduce((arr, cb) => {
+        return cb != callback ? arr.concat(cb) : arr;
+      }, []);
     };
 
     this.dispatchEvent = (name, ...args) => {
