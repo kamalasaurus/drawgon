@@ -1,6 +1,7 @@
 import m from '../../node_modules/mithril/mithril.js';
 
 import AppState from './state/AppState.js';
+import Controller from './Controller.js';
 import Container from './components/Container.js';
 import Canvas from './components/Canvas.js';
 
@@ -19,6 +20,8 @@ export default function App(root) {
 
   const appState = new AppState({A: 4, dpi: 300});
 
+  const controller = new Controller({A: 4, dpi: 300});
+
   // attach keyboard shortcuts here. Might have to
   // instantiate buttons outside router to call
   // functions?  No, just, call them from appState
@@ -27,6 +30,10 @@ export default function App(root) {
   //   appState.passMessage(e);
   //   return false;
   // });
+
+  // new Dimensions(appController) // select page size
+  // preserve 'layout' div b/w views follow mithril
+  // documentation
 
   m.route(root, '/', {
     '/': (new Container('layout', [
