@@ -29,11 +29,11 @@ export default class Controller {
     let canvas = null;
 
 
+    // public
     ///////// events!
 
     const events = {};
 
-    // public
     this.addEventListener = (name, callback) => {
       const arr = events[name] || [];
       events[name] = arr.concat(callback);
@@ -53,8 +53,6 @@ export default class Controller {
 
     ///////// end events!
 
-
-    // public
     this.state = state;
 
     this.restoreDefaults = () => {
