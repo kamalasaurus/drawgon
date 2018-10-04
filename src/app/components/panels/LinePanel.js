@@ -1,4 +1,3 @@
-import Brushes from '../../state/Brushes.js';
 import Container from '../../Container.js';
 import Button from '../controls/Button.js';
 

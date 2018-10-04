@@ -1,6 +1,5 @@
 import m from '../../node_modules/mithril/mithril.js';
 
-import AppState from './state/AppState.js';
 import Controller from './Controller.js';
 import Container from './components/Container.js';
 import Canvas from './components/Canvas.js';
@@ -18,37 +17,35 @@ import Clear from './components/controls/Clear.js';
 
 export default function App(root) {
 
-  const appState = new AppState({A: 4, dpi: 300});
-
-  const controller = new Controller({A: 4, dpi: 300});
+  const ctrl = new Controller({A: 4, dpi: 300});
 
   // attach keyboard shortcuts here. Might have to
   // instantiate buttons outside router to call
-  // functions?  No, just, call them from appState
+  // functions?  No, just, call them from ctrl
   // document.body.addEventListener('keypress', (e) => {
   //   e.preventDefault();
-  //   appState.passMessage(e);
+  //   ctrl.passMessage(e);
   //   return false;
   // });
 
-  // new Dimensions(appController) // select page size
+  // new New(ctrl) // select page size
   // preserve 'layout' div b/w views follow mithril
   // documentation
 
   m.route(root, '/', {
     '/': (new Container('layout', [
-      m(new Canvas(appState)),
+      m(new Canvas(ctrl)),
       m(new Container('controls', [
-        m(new Brush(appState)),
-        m(new Color(appState)),
-        m(new Line(appState)),
-        m(new Eraser(appState)),
-        m(new Zoom(appState)),
-        m(new Undo(appState)),
-        m(new Redo(appState)),
-        m(new Rotate(appState)),
-        m(new Save(appState)),
-        m(new Clear(appState))
+        m(new Brush(ctrl)),
+        m(new Color(ctrl)),
+        m(new Line(ctrl)),
+        m(new Eraser(ctrl)),
+        m(new Zoom(ctrl)),
+        m(new Undo(ctrl)),
+        m(new Redo(ctrl)),
+        m(new Rotate(ctrl)),
+        m(new Save(ctrl)),
+        m(new Clear(ctrl))
       ]))
     ]))
   });

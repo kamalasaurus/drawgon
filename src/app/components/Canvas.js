@@ -2,7 +2,7 @@ import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 
 export default class Canvas {
-  constructor(appState) {
+  constructor(ctrl) {
 
     // private
     const clear = () => {
@@ -48,14 +48,14 @@ export default class Canvas {
       this.context.beginPath();
       this.context.moveTo(pX, pY);
       this.context.lineTo(x, y);
-      this.context.lineWidth = appState.state.lineWidth * this.force;
+      this.context.lineWidth = ctrl.state.lineWidth * this.force;
       this.context.stroke();
 
       // assign action to history
-      appState.pushState({
-        brush: appState.state.brush,
-        color: appState.state.color, //TODO: get live color
-        opacity: appState.state.opacity, //TODO: get live opacity
+      ctrl.pushState({
+        brush: ctrl.state.brush,
+        color: ctrl.state.color, //TODO: get live color
+        opacity: ctrl.state.opacity, //TODO: get live opacity
         lineWidth: this.context.lineWidth,
         path: [pX, pY, x, y]
       });
@@ -104,8 +104,8 @@ export default class Canvas {
         {
           id: 'surface',
           class: 'surface',
-          width: appState.state.width,
-          height: appState.state.height,
+          width: ctrl.state.width,
+          height: ctrl.state.height,
           style: '--aspect-ratio: 1.414/1;' // TODO: A3 and A4 have the same aspect ratio!
         },
         conditionalEvents()
@@ -123,9 +123,8 @@ export default class Canvas {
       this.prevX = null;
       this.prevY = null;
 
-      // TODO: only leak relevant functionality to appState
-      // change appState name to appController
-      appState.assignCanvas(this);
+      // TODO: only leak relevant functionality to ctrl
+      ctrl.assignCanvas(this);
 
       Pressure.set(vnode.dom, {
         change: (force) => {

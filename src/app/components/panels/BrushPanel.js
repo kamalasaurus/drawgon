@@ -1,4 +1,4 @@
-import Brushes from '../../state/Brushes.js';
+import Brushes from '../../options/Brushes.js';
 import Container from '../../Container.js';
 import Button from '../controls/Button.js';
 

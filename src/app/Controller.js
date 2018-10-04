@@ -1,4 +1,4 @@
-export default class AppController {
+export default class Controller {
   constructor({A, dpi}) {
 
     // currently only supports A-series papers, change base length for B-series
