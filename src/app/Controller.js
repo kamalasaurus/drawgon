@@ -47,7 +47,9 @@ export default class Controller {
     };
 
     this.dispatchEvent = (name, ...args) => {
-      const call = (cb) => ((typeof cb === 'function') && cb({name, args}));
+      const call = (cb) => {
+        if ('function' === typeof cb) cb({name, args});
+      };
       events[name].forEach(call);
     };
 
