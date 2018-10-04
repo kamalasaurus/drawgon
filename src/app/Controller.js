@@ -41,15 +41,12 @@ export default class Controller {
     };
 
     this.addEventListener = (name, callback) => {
-      console.assert('string' === typeof name && name.length);
-      console.assert('function' === typeof callback);
       const {n, arr} = norm(name);
-      events[n] = arr.concat(callback);
+      if ('function' === typeof callback && n.length)
+        events[n] = arr.concat(callback);
     };
 
     this.removeEventListener = (name, callback) => {
-      console.assert('string' === typeof name && name.length);
-      console.assert('function' === typeof callback);
       const {n, arr} = norm(name);
       events[n] = arr.reduce((arr, cb) => {
         return cb != callback ? arr.concat(cb) : arr;
@@ -57,13 +54,8 @@ export default class Controller {
     };
 
     this.dispatchEvent = (name, ...args = []) => {
-      console.assert('string' === typeof name && name.length);
       const {n, arr} = norm(name);
-      const call = (cb) => {
-        console.assert('function' === typeof cb);
-        cb({n, args});
-      };
-      arr.forEach(call);
+      arr.forEach(cb => cb({n, args}));
     };
 
     ///////// end events!
