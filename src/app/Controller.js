@@ -28,6 +28,30 @@ export default class Controller {
 
     let canvas = null;
 
+
+    ///////// events!
+
+    const events = {};
+
+    // public
+    this.addEventListener = (name, callback) => {
+      const arr = (events[name] || []).slice();
+      events[name] = arr.concat(callback);
+    };
+
+    this.removeEventListener = (name, callback) => {
+      const arr = (events[name] || []).slice();
+      events[name] = arr.splice(arr.indexOf(callback), 1), arr;
+    };
+
+    this.dispatch = (name, ...args) => {
+      const call = (cb) => cb({name, args});
+      events[name].forEach(call);
+    };
+
+    ///////// end events!
+
+
     // public
     this.state = state;
 
@@ -63,65 +87,3 @@ export default class Controller {
   }
 }
 
-var EventBus = (function() {
-  'use strict';
-
-  var bus = {};
-
-  var contains = function(array, name) {
-    return array.indexOf(name) !== -1;
-  };
-
-  //var events = []
-    //.concat(vastEvents)
-    //.concat(Object.keys(vpaidEvents))
-    //.reduce(function(obj, name) {
-      //obj[name] = contains(vastEvents, name) ?
-        //[ sendEvent ] :
-        //[ Reporter.log ].concat(vpaidEvents[name]);
-      //return obj;
-    //}, {});
-
-  // private
-  var notSubscribable = function(name) {
-    return !contains(Object.keys(events), name);
-  };
-
-  // remove callback from event subscription arrays
-  var removeIfExistingCallback = function(callback, name) {
-    var cbArray = events[name].slice();
-    var idx = cbArray.indexOf(callback);
-    if (idx !== -1) { cbArray.splice(idx, 1); }
-    return cbArray;
-  };
-
-  // public
-  bus.subscribe = function(callback, name) {
-    // test for case -- maybe have to compare all lowercase and filter?
-    if (notSubscribable(name)) { return; }
-    // prevent multiple subscriptions to the same callback
-    var cbArray = removeIfExistingCallback(callback, name);
-    events[name] = cbArray.concat(callback);
-  };
-
-  bus.unsubscribe = function(callback, name) {
-    if (notSubscribable(name)) { return; }
-    events[name] = removeIfExistingCallback(callback, name);
-  };
-
-  bus.dispatchEvent = function(name, arg) {
-    // have to work on making sure all clickthrough arguments are passed through
-    // have logging here, so name doesn't have to be passed down
-    // TODO: migrate external ad event behavior into this function
-    var event = {
-      type: name,
-      arg: arg
-    };
-    events[name].forEach(function(cb) {
-      cb.call(bus, event);
-    });
-  };
-
-  return bus;
-
-})();
