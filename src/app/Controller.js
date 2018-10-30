@@ -1,7 +1,7 @@
 import download from '../../node_modules/downloadjs/download.js';
 
 export default class Controller {
-  constructor({A = 4, dpi = 300}) {
+  constructor({filename = 'image.png', A = 4, dpi = 300}) {
 
     // currently only supports A-series papers, change base length for B-series
     // https://www.prepressure.com/library/paper-size/din-a3
@@ -24,23 +24,9 @@ export default class Controller {
     };
 
     const downloadImage = (dataUrl) => {
-
-      //const iframe = `<iframe width="100%"; height="100%"; src="${dataUrl}" style="border: none;"></iframe>`;
-      //const tab = window.open();
-      //tab.document.open();
-      //tab.document.write(iframe);
-      //tab.document.close();
-
-      const save_link = document.createElement('a');
-      //link.target = '_blank';
-      //save_link.rel = 'noopener noreferrer';
-      //link.style = 'display: none;'
-      link.href = dataUrl;
-      link.download = 'image.png';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      delete link;
+      console.log(filename);
+      console.log(download);
+      download(dataUrl, filename);
       return true;
     };
 
