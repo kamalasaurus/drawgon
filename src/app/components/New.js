@@ -10,8 +10,7 @@ export default class New {
 
     this.view = (vnode) => {
       return m('form', {
-        class: 'new',
-        onsubmit: submit
+        class: 'new'
       }, [
         m('label', {class: 'label'}, 'name'),
         m('input', {type: 'text', name: 'name', placeholder: 'image', value: 'image'}),
@@ -34,7 +33,12 @@ export default class New {
           m('option', {value: '9'}, 'A9'),
           m('option', {value: '10'}, 'A10')
         ]),
-        m('input', {type: 'submit', onclick: submit})
+        m('label', {class: 'label'}, 'dpi'),
+        m('select', [
+          m('option', {value: '72'}, '72'),
+          m('option', {value: '300', selected: 'selected'}, '300'),
+        ]),
+        m('div', {class: 'form-button', onclick: submit}, 'Ok')
       ]);
     };
   }
