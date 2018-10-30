@@ -2,6 +2,7 @@ import m from '../../node_modules/mithril/mithril.js';
 
 import Controller from './Controller.js';
 import Container from './components/Container.js';
+import New from './components/New.js';
 import Canvas from './components/Canvas.js';
 
 import Brush from './components/controls/Brush.js';
@@ -28,12 +29,11 @@ export default function App(root) {
   //   return false;
   // });
 
-  // new New(ctrl) // select page size
-  // preserve 'layout' div b/w views follow mithril
-  // documentation
-
   m.route(root, '/', {
     '/': (new Container('layout', [
+      m(new New(ctrl))
+    ])),
+    '/draw': (new Container('layout', [
       m(new Canvas(ctrl)),
       m(new Container('controls', [
         m(new Brush(ctrl)),

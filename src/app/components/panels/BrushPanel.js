@@ -1,6 +1,6 @@
 import Brushes from '../../options/Brushes.js';
 import Container from '../../Container.js';
-import Button from '../controls/Button.js';
+import Button from '../Button.js';
 
 export default class BrushPanel {
   constructor() {
