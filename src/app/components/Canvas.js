@@ -15,6 +15,10 @@ export default class Canvas {
       return this;
     };
 
+    const save = () => {
+      return this.canvas.dom.toDataURL('image/png');
+    };
+
     const down = (e) => {
       // prevent screen drag, enable drawing
       e.preventDefault();
@@ -73,7 +77,6 @@ export default class Canvas {
       this.tapped = false;
       this.prevX = null;
       this.prevY = null;
-      // this.value(this.canvas.dom.toDataURL('image/png'));
       return this;
     };
 
@@ -97,6 +100,7 @@ export default class Canvas {
 
     // public
     this.clear = clear;
+    this.save = save;
 
     this.canvas = m(
       'canvas',
@@ -113,6 +117,7 @@ export default class Canvas {
     );
 
     this.oncreate = (vnode) => {
+
       this.context = vnode.dom.getContext('2d');
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
