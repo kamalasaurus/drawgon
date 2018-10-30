@@ -1,7 +1,7 @@
 import download from '../../node_modules/downloadjs/download.js';
 
 export default class Controller {
-  constructor({filename = 'image.png', A = 4, dpi = 300}) {
+  constructor({name = 'image', mime = 'png', A = 4, dpi = 300}) {
 
     // currently only supports A-series papers, change base length for B-series
     // https://www.prepressure.com/library/paper-size/din-a3
@@ -24,9 +24,8 @@ export default class Controller {
     };
 
     const downloadImage = (dataUrl) => {
-      console.log(filename);
-      console.log(download);
-      download(dataUrl, filename);
+      const filename = [name, mime].join('.');
+      download(dataUrl, filename, 'image/png');
       return true;
     };
 
