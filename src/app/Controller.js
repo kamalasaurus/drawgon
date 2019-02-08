@@ -1,7 +1,7 @@
 import download from '../../node_modules/downloadjs/download.js';
 
 export default class Controller {
-  constructor({name = 'image', mime = 'png', A = 4, dpi = 300}) {
+  constructor({filename = 'image', mime = 'png', A = 4, dpi = 300}) {
 
     // currently only supports A-series papers, change base length for B-series
     // https://www.prepressure.com/library/paper-size/din-a3
@@ -24,8 +24,9 @@ export default class Controller {
     };
 
     const downloadImage = (dataUrl) => {
-      const filename = [name, mime].join('.');
-      download(dataUrl, filename, 'image/png');
+      // ternary for SVG download
+      const filenameWithExt = [filename, mime].join('.');
+      download(dataUrl, filenameWithExt, 'image/png');
       return true;
     };
 
@@ -49,7 +50,7 @@ export default class Controller {
 
     this.addEventListener = (name, callback) => {
       const {n, arr} = norm(name);
-      if ('function' === typeof callback && n.length)
+      if (n && 'function' === typeof callback)
         events[n] = arr.concat(callback);
     };
 
@@ -70,6 +71,14 @@ export default class Controller {
     // public
 
     this.state = state;
+
+    this.assignOptions = (opts) => {
+      // update initial parameter list with 'New' options
+      filename = opts.filename;
+      mime = opts.mime;
+      A = opts.A;
+      dpi = opts.dpi;
+    };
 
     this.restoreDefaults = () => {
       state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
@@ -100,7 +109,9 @@ export default class Controller {
     };
 
     this.saveCanvas = () => {
+      // have ternary to select which image gets saved
       const saved_image = canvas.save();
+      const saved_svg = canvas.saveSVG();
       downloadImage(saved_image);
       return this;
     }

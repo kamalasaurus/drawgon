@@ -4,34 +4,40 @@ export default class New {
   constructor(ctrl) {
 
     const submit = (e) => {
-      console.log(ctrl);
+      const opts = Array
+        .from(form.dom.elements)
+        .reduce((obj, el) => {
+          return obj[el.name] = el.value, obj;
+        }, {});
+
+      ctrl.assignOptions(opts);
       m.route.set('/draw');
     };
 
-    this.view = (vnode) => {
-      return m('form', {
-        class: 'new'
-      }, [
+    let form = m(
+      'form',
+      { class: 'new' },
+      [
         m('div', [
-          m('label', {class: 'label'}, 'name')
+          m('label', {class: 'label'}, 'filename')
         ]),
         m('div', [
-          m('input', {type: 'text', name: 'name', placeholder: 'image', value: 'image'})
+          m('input', {type: 'text', name: 'filename', placeholder: 'image', value: 'image0'})
         ]),
         m('div', [
           m('label', {class: 'label'}, 'image type')
         ]),
         m('div', [
-          m('select', [
+          m('select', {name: 'mime'}, [
             m('option', {value: 'png', selected: 'selected'}, 'png'),
-            m('option', {value: 'gif'}, 'gif')
+            m('option', {value: 'svg'}, 'svg')
           ])
         ]),
         m('div', [
           m('label', {class: 'label'}, 'size')
         ]),
         m('div', [
-          m('select', [
+          m('select', {name: 'size'}, [
             m('option', {value: '0'}, 'A0'),
             m('option', {value: '1'}, 'A1'),
             m('option', {value: '2'}, 'A2'),
@@ -49,7 +55,7 @@ export default class New {
           m('label', {class: 'label'}, 'dpi'),
         ]),
         m('div', [
-          m('select', [
+          m('select', {name: 'dpi'}, [
             m('option', {value: '72'}, '72'),
             m('option', {value: '300', selected: 'selected'}, '300'),
           ])
@@ -57,8 +63,11 @@ export default class New {
         m('div', [
           m('div', {class: 'form-button', onclick: submit}, 'Ok')
         ])
-      ]);
-    };
-  }
-}
+      ]
+    ); // end form template
 
+    this.view = (vnode) => {
+      return form;
+    }
+  } // end constructor
+} // end class

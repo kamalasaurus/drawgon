@@ -18,7 +18,7 @@ import Clear from './components/controls/Clear.js';
 
 export default function App(root) {
 
-  const ctrl = new Controller({name: 'image', mime: 'png', A: 4, dpi: 300});
+  const ctrl = new Controller({});
 
   // attach keyboard shortcuts here. Might have to
   // instantiate buttons outside router to call

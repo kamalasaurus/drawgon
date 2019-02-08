@@ -20,6 +20,10 @@ export default class Canvas {
       return this.canvas.dom.toDataURL('image/png');
     };
 
+    const saveSVG = () => {
+      return this.c2s.getSerializedSvg();
+    }
+
     const down = (e) => {
       // prevent screen drag, enable drawing
       e.preventDefault();
