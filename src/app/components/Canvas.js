@@ -6,6 +6,10 @@ export default class Canvas {
   constructor(ctrl) {
 
     // private
+    const resize = () => {
+      // resize canvas and c2s :/
+    };
+
     const clear = () => {
       // TODO: replace w/ clearRect and make a background div with white or
       // checkerboard pattern.  This is necessary for a useful eraser and layers!
@@ -104,6 +108,8 @@ export default class Canvas {
     };
 
     // public
+
+    this.resize = resize;
     this.clear = clear;
     this.save = save;
 
@@ -117,7 +123,7 @@ export default class Canvas {
           class: 'surface',
           width: ctrl.state.width,
           height: ctrl.state.height,
-          style: '--aspect-ratio: 1.414/1;' // TODO: A3 and A4 have the same aspect ratio!
+          style: '--aspect-ratio: 1.414/1;'
         },
         conditionalEvents()
       )

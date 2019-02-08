@@ -83,7 +83,6 @@ export default class Controller {
       mime = opts.mime;
       A = opts.A;
       dpi = opts.dpi;
-      this.restoreDefaults();
       return this;
     };
 

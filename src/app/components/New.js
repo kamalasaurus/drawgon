@@ -10,7 +10,10 @@ export default class New {
           return obj[el.name] = el.value, obj;
         }, {});
 
-      ctrl.assignOptions(opts);
+      ctrl
+        .assignOptions(opts)
+        .restoreDefaults();
+
       m.route.set('/draw');
     };
 
