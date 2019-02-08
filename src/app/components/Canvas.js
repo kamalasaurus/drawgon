@@ -1,5 +1,6 @@
 import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
+import C2S from '../../../node_modules/canvas2svg/canvas2svg.js';
 
 export default class Canvas {
   constructor(ctrl) {
@@ -119,6 +120,15 @@ export default class Canvas {
     this.oncreate = (vnode) => {
 
       this.context = vnode.dom.getContext('2d');
+
+      this.c2s = new C2S({
+        ctx: this.context,
+        width: ctrl.state.width,
+        height: ctrl.state.height,
+        enableMirroring: false,
+        document: document
+      });
+
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
 

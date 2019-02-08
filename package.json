@@ -2,6 +2,7 @@
   "name": "webdraw",
   "version": "1.0.0",
   "description": "https://developer.github.com/v3/guides/getting-started/#oauth",
+  "repository": "https://github.com/kamalasaurus/webdraw",
   "main": "main.js",
   "scripts": {
     "start": "live-server",
@@ -14,6 +15,7 @@
   "dependencies": {
     "downloadjs": "https://github.com/kamalasaurus/download/tarball/master",
     "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next",
-    "pressure": "https://github.com/kamalasaurus/pressure/tarball/master"
+    "pressure": "https://github.com/kamalasaurus/pressure/tarball/master",
+    "canvas2svg": "https://github.com/kamalasaurus/canvas2svg/tarball/master"
   }
 }

@@ -12,33 +12,51 @@ export default class New {
       return m('form', {
         class: 'new'
       }, [
-        m('label', {class: 'label'}, 'name'),
-        m('input', {type: 'text', name: 'name', placeholder: 'image', value: 'image'}),
-        m('label', {class: 'label'}, 'image type'),
-        m('select', [
-          m('option', {value: 'png', selected: 'selected'}, 'png'),
-          m('option', {value: 'gif'}, 'gif')
+        m('div', [
+          m('label', {class: 'label'}, 'name')
         ]),
-        m('label', {class: 'label'}, 'size'),
-        m('select', [
-          m('option', {value: '0'}, 'A0'),
-          m('option', {value: '1'}, 'A1'),
-          m('option', {value: '2'}, 'A2'),
-          m('option', {value: '3'}, 'A3'),
-          m('option', {value: '4', selected: 'selected'}, 'A4'),
-          m('option', {value: '5'}, 'A5'),
-          m('option', {value: '6'}, 'A6'),
-          m('option', {value: '7'}, 'A7'),
-          m('option', {value: '8'}, 'A8'),
-          m('option', {value: '9'}, 'A9'),
-          m('option', {value: '10'}, 'A10')
+        m('div', [
+          m('input', {type: 'text', name: 'name', placeholder: 'image', value: 'image'})
         ]),
-        m('label', {class: 'label'}, 'dpi'),
-        m('select', [
-          m('option', {value: '72'}, '72'),
-          m('option', {value: '300', selected: 'selected'}, '300'),
+        m('div', [
+          m('label', {class: 'label'}, 'image type')
         ]),
-        m('div', {class: 'form-button', onclick: submit}, 'Ok')
+        m('div', [
+          m('select', [
+            m('option', {value: 'png', selected: 'selected'}, 'png'),
+            m('option', {value: 'gif'}, 'gif')
+          ])
+        ]),
+        m('div', [
+          m('label', {class: 'label'}, 'size')
+        ]),
+        m('div', [
+          m('select', [
+            m('option', {value: '0'}, 'A0'),
+            m('option', {value: '1'}, 'A1'),
+            m('option', {value: '2'}, 'A2'),
+            m('option', {value: '3'}, 'A3'),
+            m('option', {value: '4', selected: 'selected'}, 'A4'),
+            m('option', {value: '5'}, 'A5'),
+            m('option', {value: '6'}, 'A6'),
+            m('option', {value: '7'}, 'A7'),
+            m('option', {value: '8'}, 'A8'),
+            m('option', {value: '9'}, 'A9'),
+            m('option', {value: '10'}, 'A10')
+          ])
+        ]),
+        m('div', [
+          m('label', {class: 'label'}, 'dpi'),
+        ]),
+        m('div', [
+          m('select', [
+            m('option', {value: '72'}, '72'),
+            m('option', {value: '300', selected: 'selected'}, '300'),
+          ])
+        ]),
+        m('div', [
+          m('div', {class: 'form-button', onclick: submit}, 'Ok')
+        ])
       ]);
     };
   }
