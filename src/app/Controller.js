@@ -72,16 +72,18 @@ export default class Controller {
 
     this.state = state;
 
+    this.restoreDefaults = () => {
+      state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
+      return this;
+    };
+
     this.assignOptions = (opts) => {
       // update initial parameter list with 'New' options
       filename = opts.filename;
       mime = opts.mime;
       A = opts.A;
       dpi = opts.dpi;
-    };
-
-    this.restoreDefaults = () => {
-      state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
+      this.restoreDefaults();
       return this;
     };
 

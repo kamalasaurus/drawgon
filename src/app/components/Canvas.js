@@ -107,6 +107,8 @@ export default class Canvas {
     this.clear = clear;
     this.save = save;
 
+    //DON'T CREATE CANVAS UNTIL NEW EVENT IS FIRED FROM CONTROLLER!!
+
     this.canvas = m(
       'canvas',
       Object.assign(
