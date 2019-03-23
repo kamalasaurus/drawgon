@@ -73,8 +73,6 @@ export default class Controller {
     this.state = state;
 
     this.restoreDefaults = () => {
-      console.log(A);
-      console.log(dpi);
       state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
       return this;
     };

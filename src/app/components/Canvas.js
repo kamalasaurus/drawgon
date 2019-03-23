@@ -13,8 +13,13 @@ export default class Canvas {
     const clear = () => {
       // TODO: replace w/ clearRect and make a background div with white or
       // checkerboard pattern.  This is necessary for a useful eraser and layers!
-      this.context.fillStyle = 'white';
-      this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      //this.context.fillStyle = 'white';
+      //this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+
+      this.c2s.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      this.c2s.fillStyle = 'white';
+      this.c2s.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+
       // clearRect actually makes it transparent
       // this.value('');
       return this;
@@ -58,11 +63,17 @@ export default class Canvas {
       const pY = isFirstTouch ? y : this.prevY;
 
       // draw line from previous position to current position
-      this.context.beginPath();
-      this.context.moveTo(pX, pY);
-      this.context.lineTo(x, y);
-      this.context.lineWidth = ctrl.state.lineWidth * this.force;
-      this.context.stroke();
+      //this.context.beginPath();
+      //this.context.moveTo(pX, pY);
+      //this.context.lineTo(x, y);
+      //this.context.lineWidth = ctrl.state.lineWidth * this.force;
+      //this.context.stroke();
+
+      this.c2s.beginPath();
+      this.c2s.moveTo(pX, pY);
+      this.c2s.lineTo(x, y);
+      this.c2s.lineWidth = ctrl.state.lineWidth * this.force;
+      this.c2s.stroke();
 
       // assign action to history
       ctrl.pushState({
@@ -112,6 +123,7 @@ export default class Canvas {
     this.resize = resize;
     this.clear = clear;
     this.save = save;
+    this.saveSVG = saveSVG;
 
     //DON'T CREATE CANVAS UNTIL NEW EVENT IS FIRED FROM CONTROLLER!!
 
@@ -141,8 +153,13 @@ export default class Canvas {
         document: document
       });
 
-      this.context.fillStyle = 'white';
-      this.context.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
+      //this.context.fillStyle = 'white';
+      //this.context.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
+
+      this.c2s.fillStyle = 'white';
+      this.c2s.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
+
+      console.log(this.c2s);
 
       this.force = 1;
       this.tapped  = false;
