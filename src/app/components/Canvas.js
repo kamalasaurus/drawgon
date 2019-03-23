@@ -6,22 +6,27 @@ export default class Canvas {
   constructor(ctrl) {
 
     // private
+    const draw = (assign, method, ...args) => {
+      if (assign) {
+        this.context[method] = args[0];
+        this.c2s[method] = args[0];
+      } else {
+        this.context[method].apply(this.context, args);
+        this.c2s[method].apply(this.c2s, args);
+      }
+      return this;
+    }
+
     const resize = () => {
       // resize canvas and c2s :/
     };
 
     const clear = () => {
-      // TODO: replace w/ clearRect and make a background div with white or
-      // checkerboard pattern.  This is necessary for a useful eraser and layers!
-      //this.context.fillStyle = 'white';
-      //this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      //TODO: might need to manually clear svg children
 
-      this.c2s.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      this.c2s.fillStyle = 'white';
-      this.c2s.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
-
-      // clearRect actually makes it transparent
-      // this.value('');
+      draw(true, 'fillStyle', 'white');
+      draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       return this;
     };
 
@@ -63,17 +68,11 @@ export default class Canvas {
       const pY = isFirstTouch ? y : this.prevY;
 
       // draw line from previous position to current position
-      //this.context.beginPath();
-      //this.context.moveTo(pX, pY);
-      //this.context.lineTo(x, y);
-      //this.context.lineWidth = ctrl.state.lineWidth * this.force;
-      //this.context.stroke();
-
-      this.c2s.beginPath();
-      this.c2s.moveTo(pX, pY);
-      this.c2s.lineTo(x, y);
-      this.c2s.lineWidth = ctrl.state.lineWidth * this.force;
-      this.c2s.stroke();
+      draw(false, 'beginPath');
+      draw(false, 'moveTo', pX, pY);
+      draw(false, 'lineTo', x, y);
+      draw(true, 'lineWidth', ctrl.state.lineWidth * this.force);
+      draw(false, 'stroke');
 
       // assign action to history
       ctrl.pushState({
@@ -147,19 +146,13 @@ export default class Canvas {
 
       this.c2s = new C2S({
         ctx: this.context,
-        width: ctrl.state.width,
-        height: ctrl.state.height,
-        enableMirroring: false,
+        width: vnode.dom.width,
+        height: vnode.dom.height,
+        enableMirroring: true,
         document: document
       });
 
-      //this.context.fillStyle = 'white';
-      //this.context.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
-
-      this.c2s.fillStyle = 'white';
-      this.c2s.fillRect(0, 0, vnode.dom.width, vnode.dom.height);
-
-      console.log(this.c2s);
+      clear();
 
       this.force = 1;
       this.tapped  = false;
