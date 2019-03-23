@@ -51,17 +51,22 @@ div.controls div.button {
   line-height: 75px;
   display: inline-block;
   cursor: pointer;
-  background-color: #ccc;
+  background-color: #333;
   vertical-align: middle;
   text-align: center;
 }
 
 div.controls div.button:not(:last-child) {
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px #bbb;
 }
 
-div.button img.icon {
+div.controls div.button img.icon {
   display: inline-block;
   padding-top: 12.5px;
+  opacity: 0.75;
+}
+
+div.controls div.button:hover {
+  background-color: turquoise;
 }
 
