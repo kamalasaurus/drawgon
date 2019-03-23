@@ -37,16 +37,27 @@ canvas.surface.eraser {
   cursor: url(app/icons/cursors/Eraser.png) 0 24, auto;
 }
 
-div.button {
+div.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75px;
+}
+
+div.controls div.button {
+  display: border-box;
   width: 75px;
   height: 75px;
   line-height: 75px;
   display: inline-block;
   cursor: pointer;
   background-color: #ccc;
-  border: solid 1px white;
   vertical-align: middle;
   text-align: center;
+}
+
+div.controls div.button:not(:last-child) {
+  border-bottom: solid 1px white;
 }
 
 div.button img.icon {

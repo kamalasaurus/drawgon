@@ -40,7 +40,7 @@ export default class New {
           m('label', {class: 'label'}, 'size')
         ]),
         m('div', [
-          m('select', {name: 'size'}, [
+          m('select', {name: 'A'}, [
             m('option', {value: '0'}, 'A0'),
             m('option', {value: '1'}, 'A1'),
             m('option', {value: '2'}, 'A2'),

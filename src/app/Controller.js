@@ -73,6 +73,8 @@ export default class Controller {
     this.state = state;
 
     this.restoreDefaults = () => {
+      console.log(A);
+      console.log(dpi);
       state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
       return this;
     };
@@ -81,8 +83,9 @@ export default class Controller {
       // update initial parameter list with 'New' options
       filename = opts.filename;
       mime = opts.mime;
-      A = opts.A;
-      dpi = opts.dpi;
+      // cast form type from string to number for following fields
+      A = +opts.A;
+      dpi = +opts.dpi;
       return this;
     };
 
