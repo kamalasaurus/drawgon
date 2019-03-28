@@ -16,10 +16,10 @@ const PRECACHE_URLS = [
   "src/app/App.js",
   "src/app/components/Canvas.js",
   "src/style.css",
-  "node_modules/mithril/mithril.js",
-  "node_modules/pressure/dist/pressure.js",
-  "node_modules/downloadjs/download.js",
-  "node_modules/canvas2svg/canvas2svg.js"
+  //"node_modules/mithril/mithril.js",
+  //"node_modules/pressure/dist/pressure.js",
+  //"node_modules/downloadjs/download.js",
+  //"node_modules/canvas2svg/canvas2svg.js"
 ]
 
 const PRECACHE = 'version1';
