@@ -1,4 +1,4 @@
-import m from '../../../../node_modules/mithril/mithril.js';
+import m from '../../../node_modules/mithril/mithril.js';
 
 export default class Button {
   constructor(name, onclick) {
