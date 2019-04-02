@@ -38,12 +38,12 @@ export default function App(root) {
       m(new Container('controls', [
         m(new Brush(ctrl)),
         m(new Color(ctrl)),
-        m(new Line(ctrl)),
-        m(new Eraser(ctrl)),
-        m(new Zoom(ctrl)),
+        //m(new Line(ctrl)),
+        //m(new Eraser(ctrl)),
+        //m(new Zoom(ctrl)),
         m(new Undo(ctrl)),
         m(new Redo(ctrl)),
-        m(new Rotate(ctrl)),
+        //m(new Rotate(ctrl)),
         m(new Save(ctrl)),
         m(new Clear(ctrl))
       ]))

@@ -44,7 +44,8 @@ div.controls {
   width: 75px;
 }
 
-div.controls div.button {
+div.controls > div.button {
+  position: relative;
   display: border-box;
   width: 75px;
   height: 75px;
@@ -56,17 +57,17 @@ div.controls div.button {
   text-align: center;
 }
 
-div.controls div.button:not(:last-child) {
+div.controls > div.button:not(:last-child) {
   border-bottom: solid 1px #bbb;
 }
 
-div.controls div.button img.icon {
+div.controls > div.button img.icon {
   display: inline-block;
   padding-top: 12.5px;
   opacity: 0.75;
 }
 
-div.controls div.button:hover {
+div.controls > div.button:hover {
   background-color: turquoise;
 }
 

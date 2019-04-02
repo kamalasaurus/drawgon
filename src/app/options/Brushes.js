@@ -1,12 +1,9 @@
 // bind the brush functions to the canvas context!!
-export default Brushes = {
+export default {
   round() {
     console.log(this.name);
   },
   square() {
-    console.log(this.name);
-  },
-  pastel() {
     console.log(this.name);
   },
   squareVector() {
