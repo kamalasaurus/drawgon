@@ -1,4 +1,4 @@
-import m from '../../node_modules/mithril/mithril.js';
+import { h, Router } from '../../dependencies.js';
 
 import Controller from './Controller.js';
 import Container from './components/Container.js';
@@ -16,7 +16,7 @@ import Rotate from './components/controls/Rotate.js';
 import Save from './components/controls/Save.js';
 import Clear from './components/controls/Clear.js';
 
-export default function App(root) {
+export default function App() {
 
   const ctrl = new Controller({});
 
@@ -29,25 +29,22 @@ export default function App(root) {
   //   return false;
   // });
 
-  m.route(root, '/', {
-    '/': (new Container('layout', [
-      m(new New(ctrl))
-    ])),
-    '/draw': (new Container('layout', [
-      m(new Canvas(ctrl)),
-      m(new Container('controls', [
-        m(new Brush(ctrl)),
-        m(new Color(ctrl)),
-        //m(new Line(ctrl)),
-        //m(new Eraser(ctrl)),
-        //m(new Zoom(ctrl)),
-        m(new Undo(ctrl)),
-        m(new Redo(ctrl)),
-        //m(new Rotate(ctrl)),
-        m(new Save(ctrl)),
-        m(new Clear(ctrl))
-      ]))
-    ]))
-  });
+  return h(Router, {},
+    h(Container, {path: '/', class: 'layout'}, [
+      h(new New(ctrl))
+    ]),
+    h(Container, {path: '/draw', class: 'layout'}, [
+      h(new Canvas(ctrl)),
+      h(Container, {class: 'controls'}, [
+        h(new Brush(ctrl)),
+        h(new Color(ctrl)),
+        h(new Undo(ctrl)),
+        h(new Redo(ctrl)),
+        h(new Save(ctrl)),
+        h(new Clear(ctrl))
+      ]);
+    ])
+  );
+
 };
 
