@@ -13,9 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "canvas2svg": "https://github.com/kamalasaurus/canvas2svg/tarball/master",
     "downloadjs": "https://github.com/kamalasaurus/download/tarball/master",
-    "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next",
-    "pressure": "https://github.com/kamalasaurus/pressure/tarball/master",
-    "canvas2svg": "https://github.com/kamalasaurus/canvas2svg/tarball/master"
+    "preact": "^8.4.2",
+    "preact-router": "https://github.com/kamalasaurus/preact-router/tarball/master",
+    "pressure": "https://github.com/kamalasaurus/pressure/tarball/master"
   }
 }
