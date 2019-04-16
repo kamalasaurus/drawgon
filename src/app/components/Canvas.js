@@ -41,6 +41,7 @@ export default class Canvas {
   }
 
   draw(assign, method, ...args) {
+    console.log(this);
     if (assign) {
       this.context[method] = args[0];
       this.c2s[method] = args[0];
@@ -55,12 +56,12 @@ export default class Canvas {
     // resize canvas and c2s :/
   }
 
-  clear() => {
+  clear() {
     //TODO: might need to manually clear svg children
 
-    this.draw(true, 'fillStyle', 'white');
-    this.draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-    this.draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+    this.draw.call(this, true, 'fillStyle', 'white');
+    this.draw.call(this, false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+    this.draw.call(this, false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
     return this;
   }
 

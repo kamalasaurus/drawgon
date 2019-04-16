@@ -2,6 +2,20 @@ import m from '../../../node_modules/mithril/mithril.js';
 
 export default class New {
   constructor(ctrl) {
+    const submit = (e) => {
+      const opts = Array
+        .from(this.form.dom.elements)
+        .reduce((obj, el) => {
+          return obj[el.name] = el.value, obj;
+        }, {});
+
+      ctrl
+        .assignOptions(opts)
+        .restoreDefaults();
+
+      m.route.set('/draw');
+    };
+
     this.form = m(
       'form',
       { class: 'new' },
@@ -49,24 +63,10 @@ export default class New {
           ])
         ]),
         m('div', [
-          m('div', {class: 'form-button', onclick: this.submit.bind(this)}, 'Ok')
+          m('div', {class: 'form-button', onclick: submit}, 'Ok')
         ])
       ]
     ); // end form template
-  }
-
-  submit(e) {
-    const opts = Array
-      .from(this.form.dom.elements)
-      .reduce((obj, el) => {
-        return obj[el.name] = el.value, obj;
-      }, {});
-
-    ctrl
-      .assignOptions(opts)
-      .restoreDefaults();
-
-    m.route.set('/draw');
   }
 
   view(vnode) {
@@ -74,3 +74,4 @@ export default class New {
   }
 
 } // end class
+

@@ -9,7 +9,7 @@ export default class Button {
 
   view(vnode) {
     const css = () => {
-      return active ?
+      return this.active ?
         `button${this.classname} active`:
         `button${this.classname}`;
     };
