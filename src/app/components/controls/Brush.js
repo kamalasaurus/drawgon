@@ -3,12 +3,13 @@ import Button from '../Button.js';
 import BrushPanel from '../panels/BrushPanel.js';
 
 export default class Brush extends Button {
-  constructor(ctrl) {
-    const onclick = function() {
+  constructor(ctrl, children) {
+    const onclick = (vnodeDom) => {
+      console.log(ctrl)
       return this;
     }
 
-    super('Brush', onclick);
+    super('Brush', onclick, children);
   }
 }
 

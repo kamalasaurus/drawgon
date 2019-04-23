@@ -12,18 +12,12 @@ import Redo from './components/controls/Redo.js';
 import Save from './components/controls/Save.js';
 import Clear from './components/controls/Clear.js';
 
+import BrushPanel from './components/panels/BrushPanel.js';
+import ColorPanel from './components/panels/ColorPanel.js';
+
 export default function App(root) {
 
   const ctrl = new Controller({});
-
-  // attach keyboard shortcuts here. Might have to
-  // instantiate buttons outside router to call
-  // functions?  No, just, call them from ctrl
-  // document.body.addEventListener('keypress', (e) => {
-  //   e.preventDefault();
-  //   ctrl.passMessage(e);
-  //   return false;
-  // });
 
   window.addEventListener('keydown', function(e) {
     if (!e.metaKey) return;
@@ -41,8 +35,12 @@ export default function App(root) {
     '/draw': (new Container('layout', [
       m(new Canvas(ctrl)),
       m(new Container('controls', [
-        m(new Brush(ctrl)),
-        m(new Color(ctrl)),
+        m(new Brush(ctrl, [
+          m(new BrushPanel(ctrl))
+        ])),
+        m(new Color(ctrl, [
+          m(new ColorPanel(ctrl))
+        ])),
         m(new Undo(ctrl)),
         m(new Redo(ctrl)),
         m(new Save(ctrl)),

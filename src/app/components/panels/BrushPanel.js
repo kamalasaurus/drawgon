@@ -1,17 +1,20 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 import Brushes from '../../options/Brushes.js';
 import Container from '../Container.js';
-import Button from '../Button.js';
 
-export default class BrushPanel extends Container {
-  constructor() {
-    super('brush-panel', BrushPanel.prototype.listBrushes());
-  }
+export default class BrushPanel extends Container{
+  constructor(ctrl) {
 
-  listBrushes() {
-    return Object
-      .keys(Brushes)
-      .map(name => m('div', {class: 'BrushButton'}, name))
+    const listBrushes = () => {
+      return Object
+        .keys(Brushes)
+        .map(name => {
+          return m('button', name);
+        });
+    };
+
+    super('brush-panel', [m('button', {class: close}, 'close')].concat(listBrushes()))
+
   }
 }
 

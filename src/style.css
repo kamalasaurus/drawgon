@@ -46,7 +46,7 @@ div.controls {
 
 div.controls > div.button {
   position: relative;
-  display: border-box;
+  box-sizing: border-box;
   width: 75px;
   height: 75px;
   line-height: 75px;
@@ -58,7 +58,7 @@ div.controls > div.button {
 }
 
 div.controls > div.button:not(:last-child) {
-  border-bottom: solid 1px #bbb;
+  border-bottom: 1px solid #bbb;
 }
 
 div.controls > div.button img.icon {
@@ -69,5 +69,26 @@ div.controls > div.button img.icon {
 
 div.controls > div.button:hover {
   background-color: turquoise;
+}
+
+div.controls > div.button.active {
+  border: 1px solid yellow;
+}
+
+div.controls > div.button > div.brush-panel {
+  position: absolute;
+  text-align: left;
+  top: -25px;
+  left: 85px;
+  display: none;
+}
+
+div.controls > div.button.active > div.brush-panel {
+  display: block;
+}
+
+div.controls > div.button > div.brush-panel > button {
+  display: inline-block;
+  height: 2em;
 }
 
