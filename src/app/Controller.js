@@ -37,38 +37,30 @@ export default class Controller {
 
     let canvas = null;
 
-
-    ///////// events!
-
-    const events = {};
-
-    const norm = (name = '') => {
-      const n = name.toLowerCase();
-      const arr = (events[n] || []).slice();
-      return {n, arr};
-    };
-
-    this.addEventListener = (name, callback) => {
-      const {n, arr} = norm(name);
-      if (n && 'function' === typeof callback)
-        events[n] = arr.concat(callback);
-    };
-
-    this.removeEventListener = (name, callback) => {
-      const {n, arr} = norm(name);
-      events[n] = arr.reduce((arr, cb) => {
-        return cb != callback ? arr.concat(cb) : arr;
-      }, []);
-    };
-
-    this.dispatchEvent = (name, ...args) => {
-      const {n, arr} = norm(name);
-      arr.forEach(cb => cb({n, args}));
-    };
-
-    ///////// end events!
-
     // public
+
+    this.undo = () => {
+      console.log('undo!');
+    };
+
+    this.redo = () => {
+      console.log('redo!');
+    }
+
+    this.save = () => {
+      // have ternary to select which image gets saved
+      const saved_image = canvas.save();
+      const saved_svg = canvas.saveSVG();
+      downloadImage(saved_image);
+      return this;
+    }
+
+    this.clear = () => {
+      canvas.clear();
+      return this;
+    };
+
+
 
     this.state = state;
 
@@ -104,19 +96,6 @@ export default class Controller {
       state.history.push(s);
       return this;
     };
-
-    this.clearCanvas = () => {
-      canvas.clear();
-      return this;
-    };
-
-    this.saveCanvas = () => {
-      // have ternary to select which image gets saved
-      const saved_image = canvas.save();
-      const saved_svg = canvas.saveSVG();
-      downloadImage(saved_image);
-      return this;
-    }
 
     this.restoreDefaults();
   }

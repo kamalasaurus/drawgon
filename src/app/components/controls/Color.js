@@ -13,3 +13,4 @@ export default class Color extends Button {
     super('Color', onclick);
   }
 }
+

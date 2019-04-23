@@ -3,11 +3,7 @@ import Button from '../Button.js';
 
 export default class Undo extends Button {
   constructor(ctrl) {
-    const onclick = (e) => {
-      // pop last movement off memory stack, redraw
-      return this;
-    };
-
-    super('Undo', onclick);
+    super('Undo', ctrl.undo);
   }
 }
+

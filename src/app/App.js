@@ -7,12 +7,8 @@ import Canvas from './components/Canvas.js';
 
 import Brush from './components/controls/Brush.js';
 import Color from './components/controls/Color.js';
-import Line from './components/controls/Line.js';
-import Eraser from './components/controls/Eraser.js';
-import Zoom from './components/controls/Zoom.js';
 import Undo from './components/controls/Undo.js';
 import Redo from './components/controls/Redo.js';
-import Rotate from './components/controls/Rotate.js';
 import Save from './components/controls/Save.js';
 import Clear from './components/controls/Clear.js';
 
@@ -29,6 +25,15 @@ export default function App(root) {
   //   return false;
   // });
 
+  window.addEventListener('keydown', function(e) {
+    if (!e.metaKey) return;
+    if (e.key === 'z') {
+      e.preventDefault();
+      if (e.shiftKey) ctrl.redo();
+      else ctrl.undo();
+    }
+  });
+
   m.route(root, '/', {
     '/': (new Container('layout', [
       m(new New(ctrl))
@@ -38,12 +43,8 @@ export default function App(root) {
       m(new Container('controls', [
         m(new Brush(ctrl)),
         m(new Color(ctrl)),
-        //m(new Line(ctrl)),
-        //m(new Eraser(ctrl)),
-        //m(new Zoom(ctrl)),
         m(new Undo(ctrl)),
         m(new Redo(ctrl)),
-        //m(new Rotate(ctrl)),
         m(new Save(ctrl)),
         m(new Clear(ctrl))
       ]))
