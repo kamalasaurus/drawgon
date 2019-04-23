@@ -5,17 +5,16 @@
   "repository": "https://github.com/kamalasaurus/webdraw",
   "main": "main.js",
   "scripts": {
-    "start": "live-server",
-    "build": "\"convert css and build service-worker list\"",
-    "test": "\"come up with something\""
+    "start": "live-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "kamalasaurus",
   "license": "ISC",
   "dependencies": {
     "downloadjs": "https://github.com/kamalasaurus/download/tarball/master",
     "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next",
     "pressure": "https://github.com/kamalasaurus/pressure/tarball/master",
-    "canvas2svg": "https://github.com/kamalasaurus/canvas2svg/tarball/master"
+    "canvas2svg": "https://github.com/kamalasaurus/canvas2svg/tarball/master",
+    "canvg": "https://github.com/kamalasaurus/canvg/tarball/master"
   }
 }
