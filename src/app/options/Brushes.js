@@ -12,7 +12,7 @@ export default {
     draw(false, 'stroke');
   },
   squareVector(draw, {pX, pY, x, y, force, lineWidth}) {
-    const maxSize = force * 60;
+    const maxSize = (5*(1 -force) + 0.1) * 60;
     const centerDiff = maxSize / 2;
     draw(false, 'rect', x - centerDiff, y - centerDiff, maxSize, maxSize);
     draw(true, 'lineWidth', lineWidth);
