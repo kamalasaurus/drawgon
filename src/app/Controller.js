@@ -10,7 +10,6 @@ export default class Controller {
 
     const DEFAULTS = {
       brush: 'round',
-      color: '#000000',
       lineWidth: 5
     };
 
@@ -23,6 +22,9 @@ export default class Controller {
     };
 
     const downloadImage = (dataUrl, isSvg) => {
+      //TODO: this is async and stateful, only saves svg currently
+      //probably just don't save a png, or, have it wait before saving
+      //second image
       if (isSvg) {
         const filenameSvg = [filename, 'svg'].join('.');
         download(dataUrl, filenameSvg, 'image/svg');
@@ -33,6 +35,9 @@ export default class Controller {
       return true;
     };
 
+    //TODO: just use svg2canvas project for history state, remove
+    //child nodes from there.  Way simpler than having independent
+    //history since it's implicitly created by svg2canvas /shrug
     let state = {
       flattenedImage: '',
       history: []

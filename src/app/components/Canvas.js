@@ -85,7 +85,6 @@ export default class Canvas {
       // assign action to history
       ctrl.pushState({
         brush: ctrl.state.brush,
-        color: ctrl.state.color, //TODO: get live color
         lineWidth: this.context.lineWidth,
         path: [pX, pY, x, y]
       });
