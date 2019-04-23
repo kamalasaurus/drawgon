@@ -19,10 +19,18 @@ export default function App(root) {
 
   window.addEventListener('keydown', function(e) {
     if (!e.metaKey) return;
-    if (e.key === 'z') {
-      e.preventDefault();
-      if (e.shiftKey) ctrl.redo();
-      else ctrl.undo();
+    switch(e.key) {
+      case 'z':
+        e.preventDefault();
+        if (e.shiftKey) ctrl.redo();
+        else ctrl.undo();
+        break;
+      case 's':
+        e.preventDefault();
+        ctrl.save();
+        break;
+      default:
+        break;
     }
   });
 
