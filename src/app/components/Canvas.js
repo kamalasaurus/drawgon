@@ -70,14 +70,19 @@ export default class Canvas {
       const pX = isFirstTouch ? x : this.prevX;
       const pY = isFirstTouch ? y : this.prevY;
 
+      const tiltX = e.tiltX || 0;
+      const tiltY = e.tiltY || 0;
+
       // collect relevant data for brushes
       let data = {
         pX,
         pY,
         x,
         y,
-        force: this.force,
-        lineWidth: ctrl.state.lineWidth
+        force: this.force, // could just ditch polyfill and use pointerevents?
+        lineWidth: ctrl.state.lineWidth,
+        tiltX,
+        tiltY
       };
 
       // draw line from previous position to current position
@@ -107,6 +112,13 @@ export default class Canvas {
     };
 
     const conditionalEvents = () => {
+
+      const pointerEvents = {
+        onpointerdown: down,
+        onpointermove: move,
+        onpionterup: up
+      };
+
       const mouseEvents = {
         onmousedown: down,
         onmousemove: move,
@@ -119,9 +131,11 @@ export default class Canvas {
         ontouchend: up
       };
 
-      return 'ontouchstart' in window ?
-        touchEvents :
-        mouseEvents;
+      return 'PointerEvent' in window ?
+        pointerEvents :
+        'ontouchstart' in window ?
+          touchEvents :
+          mouseEvents;
     };
 
     // public
