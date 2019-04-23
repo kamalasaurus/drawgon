@@ -80,7 +80,7 @@ export default class Canvas {
       };
 
       // draw line from previous position to current position
-      Brushes[ctrl.state.brush].call(this, draw.bind(this), data);
+      Brushes[ctrl.state.brush](draw.bind(this), data);
 
       // assign action to history
       ctrl.pushState({
