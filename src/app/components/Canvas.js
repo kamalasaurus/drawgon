@@ -1,6 +1,7 @@
 import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 import C2S from '../../../node_modules/canvas2svg/canvas2svg.js';
+import canvg from '../../../node_modules/canvg/dist/browser/canvg.js';
 
 import Brushes from '../options/Brushes.js';
 
