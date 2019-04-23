@@ -2,6 +2,8 @@ import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 import C2S from '../../../node_modules/canvas2svg/canvas2svg.js';
 
+import Brushes from '../options/Brushes.js';
+
 export default class Canvas {
   constructor(ctrl) {
 
@@ -15,10 +17,11 @@ export default class Canvas {
         this.c2s[method].apply(this.c2s, args);
       }
       return this;
-    }
+    };
 
     const resize = () => {
       // resize canvas and c2s :/
+      return this;
     };
 
     const clear = () => {
@@ -78,7 +81,6 @@ export default class Canvas {
       ctrl.pushState({
         brush: ctrl.state.brush,
         color: ctrl.state.color, //TODO: get live color
-        opacity: ctrl.state.opacity, //TODO: get live opacity
         lineWidth: this.context.lineWidth,
         path: [pX, pY, x, y]
       });

@@ -9,12 +9,16 @@ export default class BrushPanel extends Container{
       return Object
         .keys(Brushes)
         .map(name => {
-          return m('button', name);
+          return m(
+            'button', {
+              onclick: function() { ctrl.setBrush(name) }
+            },
+            name
+          );
         });
     };
 
-    super('brush-panel', [m('button', {class: close}, 'close')].concat(listBrushes()))
-
+    super('brush-panel', listBrushes());
   }
 }
 

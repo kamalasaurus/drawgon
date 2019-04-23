@@ -11,7 +11,6 @@ export default class Controller {
     const DEFAULTS = {
       brush: 'round',
       color: '#000000',
-      opacity: 1,
       lineWidth: 5
     };
 
@@ -65,6 +64,11 @@ export default class Controller {
       return this;
     };
 
+    this.setBrush = (name) => {
+      state.brush = name;
+      return this;
+    };
+
 
 
     this.state = state;
@@ -86,7 +90,7 @@ export default class Controller {
 
     this.flattenHistory = () => {
       // ability to flatten to flattenedImage, blows away releveant history, but preserves image
-      // history object: {brush: type, color: col, opacity: o, lineWidth: lw, path: [sx,sy,dx,dy]}
+      // history object: {brush: type, color: col, lineWidth: lw, path: [sx,sy,dx,dy]}
       state.flattenImage = 'canvascontext.toImageURL';
       state.history = [];
       return this;
