@@ -25,11 +25,10 @@ export default class Canvas {
     };
 
     const clear = () => {
-      //TODO: might need to manually clear svg children
-
-      draw(true, 'fillStyle', 'white');
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      // only have white rect for canvas for visibility purposes
+      this.context.fillStyle = 'white';
+      this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       return this;
     };
 
@@ -70,12 +69,18 @@ export default class Canvas {
       const pX = isFirstTouch ? x : this.prevX;
       const pY = isFirstTouch ? y : this.prevY;
 
+      // collect relevant data for brushes
+      let data = {
+        pX,
+        pY,
+        x,
+        y,
+        force: this.force,
+        lineWidth: ctrl.state.lineWidth
+      };
+
       // draw line from previous position to current position
-      draw(false, 'beginPath');
-      draw(false, 'moveTo', pX, pY);
-      draw(false, 'lineTo', x, y);
-      draw(true, 'lineWidth', ctrl.state.lineWidth * this.force);
-      draw(false, 'stroke');
+      Brushes[ctrl.state.brush].call(this, draw.bind(this), data);
 
       // assign action to history
       ctrl.pushState({

@@ -20,14 +20,7 @@ export default class Button {
 
       return m('div', {
         class: `button${classname}`,
-        onclick: function(e) {
-          vnode.state.active = !vnode.state.active;
-          // I couldn't get the auto redraw to work...  oh well
-          vnode.state.active ?
-            vnode.dom.classList.add('active') :
-            vnode.dom.classList.remove('active');
-          onclick(vnode.dom);
-        }
+        onclick: function(e) { onclick(vnode) }
       }, children);
     };
 

@@ -2,15 +2,22 @@ import m from '../../../../node_modules/mithril/mithril.js';
 import Button from '../Button.js';
 
 export default class Color extends Button {
-  constructor(ctrl) {
-    const onclick = (e) => {
-      // display sunflower colorwheel!
-      // TODO: gradient strokes
-      ctrl.strokeStyle = "#000000";
-      return this;
-    };
+  constructor(ctrl, children) {
+    const onclick = (vnode) => {
+      vnode.state.active = vnode.dom.classList.contains('active');
+      vnode.state.active = !vnode.state.active;
+      // I couldn't get the auto redraw to work...  oh well
+      Array.from(vnode.dom.parentElement.children)
+        .forEach(button => button.classList.remove('active'));
 
-    super('Color', onclick);
+      if (vnode.state.active) vnode.dom.classList.add('active');
+
+      //ctrl.strokeStyle = "#000000";
+
+      return this;
+    }
+
+    super('Color', onclick, children);
   }
 }
 
