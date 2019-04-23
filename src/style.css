@@ -81,6 +81,7 @@ div.controls > div.button > div.brush-panel {
   top: -25px;
   left: 85px;
   display: none;
+  cursor: default;
 }
 
 div.controls > div.button.active > div.brush-panel {
@@ -90,5 +91,10 @@ div.controls > div.button.active > div.brush-panel {
 div.controls > div.button > div.brush-panel > button {
   display: inline-block;
   height: 2em;
+  cursor: pointer;
+}
+
+div.controls > div.button > div.brush-panel > button.close {
+  background-color: red;
 }
 
