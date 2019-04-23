@@ -23,10 +23,14 @@ export default class Controller {
       return {width, height}
     };
 
-    const downloadImage = (dataUrl) => {
-      // ternary for SVG download
-      const filenameWithExt = [filename, mime].join('.');
-      download(dataUrl, filenameWithExt, 'image/png');
+    const downloadImage = (dataUrl, isSvg) => {
+      if (isSvg) {
+        const filenameSvg = [filename, 'svg'].join('.');
+        download(dataUrl, filenameSvg, 'image/svg');
+      } else {
+        const filenamePng = [filename, mime].join('.');
+        download(dataUrl, filenamePng, 'image/png');
+      }
       return true;
     };
 
@@ -52,6 +56,7 @@ export default class Controller {
       const saved_image = canvas.save();
       const saved_svg = canvas.saveSVG();
       downloadImage(saved_image);
+      downloadImage(saved_svg, true);
       return this;
     }
 
