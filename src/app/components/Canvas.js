@@ -34,10 +34,16 @@ export default class Canvas {
     };
 
     const undo = () => {
-      console.log(this.c2s.getSerializedSvg());
+      const svg = this.c2s.getSvg();
+      const g = svg.getElementsByTagName('g')[0];
+      const lastChild = g.lastChild; // make sure this is in dom?
+      // lastChild.remove();
+      // canvg('surface', svg);
+      // return lastChild;
+      debugger;
     };
 
-    const redo = () => {
+    const redo = (undoHistory) => {
       console.log(this.c2s.getSerializedSvg());
     };
 

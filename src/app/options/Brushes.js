@@ -3,18 +3,23 @@ export default {
     draw(false, 'beginPath');
     draw(false, 'moveTo', pX, pY);
     draw(false, 'lineTo', x, y);
+    draw(false, 'closePath');
     draw(true, 'lineWidth', lineWidth * force);
     draw(false, 'stroke');
   },
   square(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
+    draw(false, 'beginPath');
     draw(false, 'rect', pX, pY, Math.abs(x-pX), Math.abs(y-pY));
+    draw(false, 'closePath');
     draw(true, 'lineWidth', lineWidth);
     draw(false, 'stroke');
   },
   squareVector(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
     const maxSize = (5*(1 -force) + 0.1) * 60;
     const centerDiff = maxSize / 2;
+    draw(false, 'beginPath');
     draw(false, 'rect', x - centerDiff, y - centerDiff, maxSize, maxSize);
+    draw(false, 'closePath');
     draw(true, 'lineWidth', lineWidth);
     draw(false, 'stroke');
   },
