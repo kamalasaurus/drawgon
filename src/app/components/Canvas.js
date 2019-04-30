@@ -23,16 +23,17 @@ export default class Canvas {
       return this;
     };
 
-    const clear = () => {
-      draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      //c2s automatically fills in the white rectangle. Kind of obnoxious
-      return this;
-    };
-
     const clearCanvas = () => {
       this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      return this;
+    };
+
+    const clear = () => {
+      draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      //c2s automatically fills in the white rectangle. Kind of obnoxious
+      clearCanvas();
       return this;
     };
 
@@ -46,7 +47,6 @@ export default class Canvas {
       svg.setAttribute('width', ctrl.state.width);
       svg.setAttribute('height', ctrl.state.height);
       clear();
-      clearCanvas();
       return this;
     };
 
