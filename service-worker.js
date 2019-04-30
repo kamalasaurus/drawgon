@@ -11,7 +11,7 @@ let cacheFiles = [
   "./index.html",
   "./LICENSE",
   "./main.js",
-  "./manifest.json",
+  "./manifest.webmanifest",
   "./mstile-150x150.png",
   "./safari-pinned-tab.svg",
   "./service-worker.js",
@@ -28,13 +28,13 @@ let cacheFiles = [
   "./src/app/components/controls/Undo.js",
   "./src/app/components/panels/BrushPanel.js",
   "./src/app/components/panels/SavePanel.js",
-  "./src/app/components/icons/controls/Brush.js",
-  "./src/app/components/icons/controls/Clear.js",
-  "./src/app/components/icons/controls/Redo.js",
-  "./src/app/components/icons/controls/Save.js",
-  "./src/app/components/icons/controls/Undo.js",
-  "./src/app/components/icons/cursors/Pencil.js",
-  "./src/app/components/options/Brushes.js",
+  "./src/app/icons/controls/Brush.png",
+  "./src/app/icons/controls/Clear.png",
+  "./src/app/icons/controls/Redo.png",
+  "./src/app/icons/controls/Save.png",
+  "./src/app/icons/controls/Undo.png",
+  "./src/app/icons/cursors/Pencil.png",
+  "./src/app/options/Brushes.js",
   "./src/style.css",
   "./node_modules/mithril/mithril.js",
   "./node_modules/pressure/dist/pressure.js",
@@ -48,8 +48,9 @@ self.addEventListener('install', function(event) {
       .open(cacheName)
       .then(function(cache) {
         return cache.addAll(cacheFiles);
-      }, function(err) {
-        console.log('service worker on install', err)
+      })
+      .catch(function(err) {
+        console.log('service worker on install', err);
       })
   );
 });
@@ -68,7 +69,6 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log(event.request);
 	event.respondWith(
 		caches
       .match(event.request)
@@ -85,13 +85,16 @@ self.addEventListener('fetch', function(event) {
               .then(function(cache) {
 							  cache.put(event.request, responseClone);
 							  return response;
-				      }, function(err) {
+				      })
+              .catch(function(err) {
                 console.log('service worker on request clone', err)
-              }); // end caches.open
-          }, function(err) {
+              });
+          })
+          .catch(function(err) {
             console.log('service worker on fetch', err);
           })
-      }, function(err) {
+      })
+      .catch(function(err) {
         console.log('service worker on fetch match', err);
       })
 	);
