@@ -21,8 +21,8 @@ export default class Canvas {
     };
 
     const resize = () => {
-      this.canvas.dom.style.width = null;
-      this.canvas.dom.style.height = null;
+      //this.canvas.dom.style.width = null;
+      //this.canvas.dom.style.height = null;
 
       // serializedSvg = this.c2s.getSerializedSvg();
 
@@ -60,9 +60,18 @@ export default class Canvas {
       const lastChild = g.lastChild;
       if (lastChild !== g.firstChild) {
         lastChild.remove();
-        clearCanvas();
-        canvg('surface', this.c2s.getSerializedSvg());
-        resize();
+        canvg(
+          'surface',
+          this.c2s.getSerializedSvg(),
+          {
+            ignoreMouse: true,
+            ignoreAnimation: true,
+            ignoreDimensions: true,
+            ignoreClear: false,
+            renderCallback: function() { console.log('undone!') },
+            forceRedraw: function() { return false; }
+          }
+        );
       }
       return lastChild;
     };
@@ -211,7 +220,6 @@ export default class Canvas {
         document: document
       });
 
-      resize();
       clear();
 
       this.force = 1;
