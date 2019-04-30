@@ -1,5 +1,7 @@
 {
+  "manifest_version": "2",
   "name": "webdraw",
+  "version": "v1",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
