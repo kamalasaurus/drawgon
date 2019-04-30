@@ -1,7 +1,6 @@
 import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 import C2S from '../../../node_modules/canvas2svg/canvas2svg.js';
-import canvg from '../../../node_modules/canvg/dist/browser/canvg.js';
 
 import Brushes from '../options/Brushes.js';
 
@@ -60,20 +59,18 @@ export default class Canvas {
       const lastChild = g.lastChild;
       if (lastChild !== g.firstChild) {
         lastChild.remove();
-        canvg(
-          'surface',
-          this.c2s.getSerializedSvg(),
-          {
-            ignoreMouse: true,
-            ignoreAnimation: true,
-            ignoreDimensions: true,
-            ignoreClear: false,
-            renderCallback: function() { console.log('undone!') },
-            forceRedraw: function() { return false; }
-          }
+        const blob = new Blob(
+          [this.c2s.getSerializedSvg()],
+          { type: 'image/svg+xml;charset=utf-8' }
         );
+        const img = new Image();
+        img.onload = () => {
+          clearCanvas();
+          this.context.drawImage(img, 0, 0);
+        };
+        img.src = URL.createObjectURL(blob);
+        return lastChild;
       }
-      return lastChild;
     };
 
     const redo = (undoHistory) => {
