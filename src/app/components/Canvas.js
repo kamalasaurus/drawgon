@@ -53,6 +53,20 @@ export default class Canvas {
       return this;
     };
 
+    const renderCanvasFromSvg = () => {
+      const blob = new Blob(
+        [this.c2s.getSerializedSvg()],
+        { type: 'image/svg+xml;charset=utf-8' }
+      );
+      const img = new Image();
+      img.onload = () => {
+        clearCanvas();
+        this.context.drawImage(img, 0, 0);
+      };
+      img.src = URL.createObjectURL(blob);
+      return this;
+    };
+
     const undo = () => {
       const svg = this.c2s.getSvg();
       const g = svg.getElementsByTagName('g')[0];
@@ -60,16 +74,7 @@ export default class Canvas {
       if (lastChild !== g.firstChild) {
         lastChild.remove();
         this.c2s.__currentElement = g.lastChild; // manually resetting the last point
-        const blob = new Blob(
-          [this.c2s.getSerializedSvg()],
-          { type: 'image/svg+xml;charset=utf-8' }
-        );
-        const img = new Image();
-        img.onload = () => {
-          clearCanvas();
-          this.context.drawImage(img, 0, 0);
-        };
-        img.src = URL.createObjectURL(blob);
+        renderCanvasFromSvg();
         return lastChild;
       }
     };
