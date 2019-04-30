@@ -27,20 +27,27 @@ export default class Canvas {
 
     const clear = () => {
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      // only have white rect for canvas for visibility purposes
+      draw(true, 'fillStyle', 'white');
+      draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      return this;
+    };
+
+    const clearCanvas = () => {
+      this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      return this;
     };
 
     const undo = () => {
       const svg = this.c2s.getSvg();
       const g = svg.getElementsByTagName('g')[0];
-      const lastChild = g.lastChild; // make sure this is in dom?
-      // lastChild.remove();
-      // canvg('surface', svg);
-      // return lastChild;
-      debugger;
+      const lastChild = g.lastChild;
+      if (lastChild  === null) return;
+      lastChild.remove();
+      clearCanvas();
+      canvg('surface', this.c2s.getSerializedSvg());
+      resize();
+      return lastChild;
     };
 
     const redo = (undoHistory) => {
@@ -52,6 +59,8 @@ export default class Canvas {
     };
 
     const saveSVG = () => {
+      // remove white rect child!
+      // make white rect child first always!
       return this.c2s.getSerializedSvg();
     }
 
