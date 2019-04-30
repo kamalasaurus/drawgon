@@ -21,6 +21,8 @@ export default class Canvas {
     };
 
     const resize = () => {
+      this.canvas.dom.style.width = null;
+      this.canvas.dom.style.height = null;
       // resize canvas and c2s :/
       return this;
     };
@@ -36,17 +38,20 @@ export default class Canvas {
       this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      return this;
     };
 
     const undo = () => {
       const svg = this.c2s.getSvg();
       const g = svg.getElementsByTagName('g')[0];
       const lastChild = g.lastChild;
-      if (lastChild  === null) return;
-      lastChild.remove();
-      clearCanvas();
-      canvg('surface', this.c2s.getSerializedSvg());
-      resize();
+      if (lastChild !== null) {
+        console.log(lastChild);
+        lastChild.remove();
+        clearCanvas();
+        canvg('surface', this.c2s.getSerializedSvg());
+        resize();
+      }
       return lastChild;
     };
 

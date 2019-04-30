@@ -1,7 +1,7 @@
 import download from '../../node_modules/downloadjs/download.js';
 
 export default class Controller {
-  constructor({filename = 'image', mime = 'png', A = 4, dpi = 300}) {
+  constructor({filename = 'image', A = 4, dpi = 300}) {
 
     // currently only supports A-series papers, change base length for B-series
     // https://www.prepressure.com/library/paper-size/din-a3
@@ -29,7 +29,7 @@ export default class Controller {
         const filenameSvg = [filename, 'svg'].join('.');
         download(dataUrl, filenameSvg, 'image/svg');
       } else {
-        const filenamePng = [filename, mime].join('.');
+        const filenamePng = [filename, 'png'].join('.');
         download(dataUrl, filenamePng, 'image/png');
       }
       return true;
@@ -91,7 +91,6 @@ export default class Controller {
     this.assignOptions = (opts) => {
       // update initial parameter list with 'New' options
       filename = opts.filename;
-      mime = opts.mime;
       // cast form type from string to number for following fields
       A = +opts.A;
       dpi = +opts.dpi;

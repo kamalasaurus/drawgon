@@ -30,15 +30,6 @@ export default class New {
           m('input', {type: 'text', name: 'filename', placeholder: 'image', value: 'image0'})
         ]),
         m('div', [
-          m('label', {class: 'label'}, 'image type')
-        ]),
-        m('div', [
-          m('select', {name: 'mime'}, [
-            m('option', {value: 'png', selected: 'selected'}, 'png'),
-            m('option', {value: 'svg'}, 'svg')
-          ])
-        ]),
-        m('div', [
           m('label', {class: 'label'}, 'size')
         ]),
         m('div', [
