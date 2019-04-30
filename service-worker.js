@@ -27,7 +27,7 @@ let cacheFiles = [
   "src/app/components/controls/Save.js",
   "src/app/components/controls/Undo.js",
   "src/app/components/panels/BrushPanel.js",
-  "src/app/components/panells/SavelPanel.js",
+  "src/app/components/panels/SavePanel.js",
   "src/app/components/icons/controls/Brush.js",
   "src/app/components/icons/controls/Clear.js",
   "src/app/components/icons/controls/Redo.js",
