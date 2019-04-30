@@ -4,6 +4,8 @@ export default class New {
   constructor(ctrl) {
 
     const submit = (e) => {
+      e.preventDefault();
+
       const opts = Array
         .from(form.dom.elements)
         .reduce((obj, el) => {
@@ -64,7 +66,7 @@ export default class New {
           ])
         ]),
         m('div', [
-          m('div', {class: 'form-button', onclick: submit}, 'Ok')
+          m('button', {class: 'form-button', onclick: submit}, 'Ok')
         ])
       ]
     ); // end form template

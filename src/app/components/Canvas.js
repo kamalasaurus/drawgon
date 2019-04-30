@@ -33,7 +33,15 @@ export default class Canvas {
       return this;
     };
 
-    const save = () => {
+    const undo = () => {
+      console.log(this.c2s.getSerializedSvg());
+    };
+
+    const redo = () => {
+      console.log(this.c2s.getSerializedSvg());
+    };
+
+    const savePNG = () => {
       return this.canvas.dom.toDataURL('image/png');
     };
 
@@ -88,13 +96,6 @@ export default class Canvas {
       // draw line from previous position to current position
       Brushes[ctrl.state.brush](draw.bind(this), data);
 
-      // assign action to history
-      ctrl.pushState({
-        brush: ctrl.state.brush,
-        lineWidth: this.context.lineWidth,
-        path: [pX, pY, x, y]
-      });
-
       // set current value for the next previous value
       this.prevX = x;
       this.prevY = y;
@@ -116,19 +117,22 @@ export default class Canvas {
       const pointerEvents = {
         onpointerdown: down,
         onpointermove: move,
-        onpionterup: up
+        onpointerup: up,
+        onpointerout: up
       };
 
       const mouseEvents = {
         onmousedown: down,
         onmousemove: move,
-        onmouseup: up
+        onmouseup: up,
+        onmouseout: up
       };
 
       const touchEvents = {
         ontouchstart: down,
         ontouchmove: move,
-        ontouchend: up
+        ontouchend: up,
+        ontouchout: up
       };
 
       return 'PointerEvent' in window ?
@@ -140,9 +144,11 @@ export default class Canvas {
 
     // public
 
+    this.undo = undo;
+    this.redo = redo;
     this.resize = resize;
     this.clear = clear;
-    this.save = save;
+    this.savePNG = savePNG;
     this.saveSVG = saveSVG;
 
     //DON'T CREATE CANVAS UNTIL NEW EVENT IS FIRED FROM CONTROLLER!!

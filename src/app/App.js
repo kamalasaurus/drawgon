@@ -12,6 +12,7 @@ import Save from './components/controls/Save.js';
 import Clear from './components/controls/Clear.js';
 
 import BrushPanel from './components/panels/BrushPanel.js';
+import SavePanel from './components/panels/SavePanel.js';
 
 export default function App(root) {
 
@@ -46,7 +47,9 @@ export default function App(root) {
         ])),
         m(new Undo(ctrl)),
         m(new Redo(ctrl)),
-        m(new Save(ctrl)),
+        m(new Save(ctrl, [
+          m(new SavePanel(ctrl))
+        ])),
         m(new Clear(ctrl))
       ]))
     ]))

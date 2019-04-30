@@ -39,8 +39,8 @@ export default class Controller {
     //child nodes from there.  Way simpler than having independent
     //history since it's implicitly created by svg2canvas /shrug
     let state = {
-      flattenedImage: '',
-      history: []
+      //flattenedImage: '',
+      //history: []
     };
 
     let canvas = null;
@@ -48,21 +48,26 @@ export default class Controller {
     // public
 
     this.undo = () => {
-      console.log('undo!');
+      canvas.undo();
+      return this;
     };
 
     this.redo = () => {
-      console.log('redo!');
-    }
+      canvas.redo();
+      return this;
+    };
 
-    this.save = () => {
-      // have ternary to select which image gets saved
-      const saved_image = canvas.save();
-      const saved_svg = canvas.saveSVG();
+    this.savePNG = () => {
+      const saved_image = canvas.savePNG();
       downloadImage(saved_image);
+      return this;
+    };
+
+    this.saveSVG = () => {
+      const saved_svg = canvas.saveSVG();
       downloadImage(saved_svg, true);
       return this;
-    }
+    };
 
     this.clear = () => {
       canvas.clear();
@@ -93,21 +98,8 @@ export default class Controller {
       return this;
     };
 
-    this.flattenHistory = () => {
-      // ability to flatten to flattenedImage, blows away releveant history, but preserves image
-      // history object: {brush: type, color: col, lineWidth: lw, path: [sx,sy,dx,dy]}
-      state.flattenImage = 'canvascontext.toImageURL';
-      state.history = [];
-      return this;
-    };
-
     this.assignCanvas = (c) => {
       canvas = c;
-      return this;
-    };
-
-    this.pushState = (s) => {
-      state.history.push(s);
       return this;
     };
 

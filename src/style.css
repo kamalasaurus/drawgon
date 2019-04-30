@@ -7,7 +7,8 @@ html, body, div.layout {
   max-width: 100%;
   max-height: 100%;
   background-color: rgb(159, 179, 190);
-  font-family: 'Noto Sans', sans-serif;
+  /*font-family: 'Noto Sans', sans-serif;*/
+  font-family: 'Monaco', 'Courier', monospace;
 }
 
 form.new {
@@ -75,7 +76,7 @@ div.controls > div.button.active {
   border: 1px solid yellow;
 }
 
-div.controls > div.button > div.brush-panel {
+div.controls > div.button > div.control-panel {
   position: absolute;
   text-align: left;
   top: -15px;
@@ -84,11 +85,11 @@ div.controls > div.button > div.brush-panel {
   cursor: default;
 }
 
-div.controls > div.button.active > div.brush-panel {
+div.controls > div.button.active > div.control-panel {
   display: block;
 }
 
-div.controls > div.button > div.brush-panel > button {
+div.controls > div.button > div.control-panel > button {
   display: inline-block;
   height: 3em;
   cursor: pointer;

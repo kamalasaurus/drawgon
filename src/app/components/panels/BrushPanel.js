@@ -18,7 +18,7 @@ export default class BrushPanel extends Container{
         });
     };
 
-    super('brush-panel', listBrushes());
+    super('control-panel', listBrushes());
   }
 }
 
