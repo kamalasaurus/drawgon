@@ -23,7 +23,20 @@ export default class Canvas {
     const resize = () => {
       this.canvas.dom.style.width = null;
       this.canvas.dom.style.height = null;
-      // resize canvas and c2s :/
+
+      // serializedSvg = this.c2s.getSerializedSvg();
+
+      //this.canvas.dom.width
+      //this.canvas.dom.height
+      //svg = this.c2s.getSvg();
+      //svg.width
+      //svg.height
+      //
+      //probably unnecessary, since resize clears contents
+      //g = svg.getElementsByTagName('g')[0]
+      //g.firstChild.width
+      //g.firstChild.height
+      // restore serialized SVG
       return this;
     };
 
@@ -198,6 +211,7 @@ export default class Canvas {
         document: document
       });
 
+      resize();
       clear();
 
       this.force = 1;
