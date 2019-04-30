@@ -59,6 +59,7 @@ export default class Canvas {
       const lastChild = g.lastChild;
       if (lastChild !== g.firstChild) {
         lastChild.remove();
+        this.c2s.__currentElement = g.lastChild; // manually resetting the last point
         const blob = new Blob(
           [this.c2s.getSerializedSvg()],
           { type: 'image/svg+xml;charset=utf-8' }
