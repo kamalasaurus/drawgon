@@ -25,8 +25,14 @@ export default class Canvas {
 
     const clear = () => {
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      draw(true, 'fillStyle', 'white');
-      draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      //c2s automatically fills in the white rectangle. Kind of obnoxious
+      return this;
+    };
+
+    const clearCanvas = () => {
+      this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      this.context.fillStyle = 'white';
+      this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       return this;
     };
 
@@ -40,13 +46,7 @@ export default class Canvas {
       svg.setAttribute('width', ctrl.state.width);
       svg.setAttribute('height', ctrl.state.height);
       clear();
-      return this;
-    };
-
-    const clearCanvas = () => {
-      this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      this.context.fillStyle = 'white';
-      this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      clearCanvas();
       return this;
     };
 

@@ -28,7 +28,7 @@ export default function App(root) {
         break;
       case 's':
         e.preventDefault();
-        ctrl.save();
+        ctrl.saveSVG();
         break;
       default:
         break;
