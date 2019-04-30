@@ -68,8 +68,7 @@ export default class Canvas {
     };
 
     const undo = () => {
-      const svg = this.c2s.getSvg();
-      const g = svg.getElementsByTagName('g')[0];
+      const g = this.c2s.getSvg().getElementsByTagName('g')[0];
       const lastChild = g.lastChild;
       if (lastChild !== g.firstChild) {
         lastChild.remove();
@@ -79,8 +78,14 @@ export default class Canvas {
       }
     };
 
-    const redo = (undoHistory) => {
-      console.log(this.c2s.getSerializedSvg());
+    const redo = (historyElement) => {
+      if (historyElement) {
+        const g = this.c2s.getSvg().getElementsByTagName('g')[0];
+        g.appendChild(historyElement);
+        this.c2s.__currentElement = historyElement;
+        renderCanvasFromSvg();
+      }
+      return this;
     };
 
     const savePNG = () => {
@@ -97,6 +102,7 @@ export default class Canvas {
       // prevent screen drag, enable drawing
       e.preventDefault();
       this.tapped = true;
+      ctrl.clearHistory();
       return this;
     };
 

@@ -35,12 +35,8 @@ export default class Controller {
       return true;
     };
 
-    //TODO: just use svg2canvas project for history state, remove
-    //child nodes from there.  Way simpler than having independent
-    //history since it's implicitly created by svg2canvas /shrug
     let state = {
-      //flattenedImage: '',
-      //history: []
+      undoHistory: []
     };
 
     let canvas = null;
@@ -48,12 +44,13 @@ export default class Controller {
     // public
 
     this.undo = () => {
-      canvas.undo();
+      const lastChild = canvas.undo();
+      if (lastChild) state.undoHistory.push(lastChild);
       return this;
     };
 
     this.redo = () => {
-      canvas.redo();
+      canvas.redo(state.undoHistory.pop());
       return this;
     };
 
@@ -71,6 +68,11 @@ export default class Controller {
 
     this.clear = () => {
       canvas.clear();
+      return this;
+    };
+
+    this.clearHistory = () => {
+      state.undoHistory = [];
       return this;
     };
 
