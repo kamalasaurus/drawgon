@@ -45,8 +45,7 @@ export default class Canvas {
       const svg = this.c2s.getSvg();
       const g = svg.getElementsByTagName('g')[0];
       const lastChild = g.lastChild;
-      if (lastChild !== null) {
-        console.log(lastChild);
+      if (lastChild !== g.firstChild) {
         lastChild.remove();
         clearCanvas();
         canvg('surface', this.c2s.getSerializedSvg());
