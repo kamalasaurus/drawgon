@@ -1,6 +1,7 @@
 {
   "manifest_version": "2",
   "name": "webdraw",
+  "short_name": "webdraw",
   "version": "v1",
   "icons": [
     {
@@ -15,7 +16,5 @@
     }
   ],
   "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "short_name": "webdraw"
+  "background_color": "#ffffff"
 }
