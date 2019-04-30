@@ -8,6 +8,10 @@ export default class Canvas {
   constructor(ctrl) {
 
     // private
+    const getGroup = () => {
+      return this.c2s.getSvg().getElementsByTagName('g')[0];
+    };
+
     const draw = (assign, method, ...args) => {
       if (assign) {
         this.context[method] = args[0];
@@ -19,30 +23,23 @@ export default class Canvas {
       return this;
     };
 
-    const resize = () => {
-      //this.canvas.dom.style.width = null;
-      //this.canvas.dom.style.height = null;
-
-      // serializedSvg = this.c2s.getSerializedSvg();
-
-      //this.canvas.dom.width
-      //this.canvas.dom.height
-      //svg = this.c2s.getSvg();
-      //svg.width
-      //svg.height
-      //
-      //probably unnecessary, since resize clears contents
-      //g = svg.getElementsByTagName('g')[0]
-      //g.firstChild.width
-      //g.firstChild.height
-      // restore serialized SVG
-      return this;
-    };
-
     const clear = () => {
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       draw(true, 'fillStyle', 'white');
       draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      return this;
+    };
+
+    const resize = () => {
+      const canvas = this.canvas.dom;
+      canvas.style.width = null;
+      canvas.style.height = null;
+      canvas.setAttribute('width', ctrl.state.width);
+      canvas.setAttribute('height', ctrl.state.height);
+      const svg = this.c2s.getSvg();
+      svg.setAttribute('width', ctrl.state.width);
+      svg.setAttribute('height', ctrl.state.height);
+      clear();
       return this;
     };
 
@@ -68,7 +65,7 @@ export default class Canvas {
     };
 
     const undo = () => {
-      const g = this.c2s.getSvg().getElementsByTagName('g')[0];
+      const g = getGroup();
       const lastChild = g.lastChild;
       if (lastChild !== g.firstChild) {
         lastChild.remove();
@@ -80,7 +77,7 @@ export default class Canvas {
 
     const redo = (historyElement) => {
       if (historyElement) {
-        const g = this.c2s.getSvg().getElementsByTagName('g')[0];
+        const g = getGroup();
         g.appendChild(historyElement);
         this.c2s.__currentElement = historyElement;
         renderCanvasFromSvg();
@@ -93,10 +90,13 @@ export default class Canvas {
     };
 
     const saveSVG = () => {
-      // remove white rect child!
-      // make white rect child first always!
-      return this.c2s.getSerializedSvg();
-    }
+      const g = getGroup();
+      const rect = g.firstChild;
+      rect.remove();
+      const serializedSvg = this.c2s.getSerializedSvg();
+      g.insertBefore(rect, g.firstChild);
+      return serializedSvg;
+    };
 
     const down = (e) => {
       // prevent screen drag, enable drawing
@@ -229,7 +229,7 @@ export default class Canvas {
         document: document
       });
 
-      clear();
+      resize();
 
       this.force = 1;
       this.tapped  = false;

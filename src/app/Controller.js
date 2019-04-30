@@ -86,7 +86,7 @@ export default class Controller {
     this.state = state;
 
     this.restoreDefaults = () => {
-      state = Object.assign(state, DEFAULTS, dimensions(A, dpi));
+      state = Object.assign(state, DEFAULTS, dimensions(A, dpi), {A, dpi});
       return this;
     };
 
@@ -96,6 +96,7 @@ export default class Controller {
       // cast form type from string to number for following fields
       A = +opts.A;
       dpi = +opts.dpi;
+      this.restoreDefaults();
       return this;
     };
 

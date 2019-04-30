@@ -19,6 +19,29 @@ export default class New {
       m.route.set('/draw');
     };
 
+    const makePaper = (a) => {
+      return m('option', {value: a, selected: (a === ctrl.state.A)}, `A${a}`);
+    };
+
+    const paperOptions = () => {
+      return m('div', [
+        m('select', {name: 'A'}, Array.from({length: 11}, (e, i) => makePaper(i)))
+      ]);
+    };
+
+    const makeDpi = (dpi) => {
+      return m('option', {value: dpi, selected: (dpi === ctrl.state.dpi)}, dpi);
+    };
+
+    const dpiOptions = () => {
+      return m('div', [
+        m('select', {name: 'dpi'}, [
+          makeDpi(72),
+          makeDpi(300)
+        ])
+      ]);
+    };
+
     let form = m(
       'form',
       { class: 'new' },
@@ -27,35 +50,16 @@ export default class New {
           m('label', {class: 'label'}, 'filename')
         ]),
         m('div', [
-          m('input', {type: 'text', name: 'filename', placeholder: 'image', value: 'image0'})
+          m('input', {type: 'text', name: 'filename', placeholder: 'image', value: 'image'})
         ]),
         m('div', [
           m('label', {class: 'label'}, 'size')
         ]),
-        m('div', [
-          m('select', {name: 'A'}, [
-            m('option', {value: '0'}, 'A0'),
-            m('option', {value: '1'}, 'A1'),
-            m('option', {value: '2'}, 'A2'),
-            m('option', {value: '3'}, 'A3'),
-            m('option', {value: '4', selected: 'selected'}, 'A4'),
-            m('option', {value: '5'}, 'A5'),
-            m('option', {value: '6'}, 'A6'),
-            m('option', {value: '7'}, 'A7'),
-            m('option', {value: '8'}, 'A8'),
-            m('option', {value: '9'}, 'A9'),
-            m('option', {value: '10'}, 'A10')
-          ])
-        ]),
+        paperOptions(),
         m('div', [
           m('label', {class: 'label'}, 'dpi'),
         ]),
-        m('div', [
-          m('select', {name: 'dpi'}, [
-            m('option', {value: '72'}, '72'),
-            m('option', {value: '300', selected: 'selected'}, '300'),
-          ])
-        ]),
+        dpiOptions(),
         m('div', [
           m('button', {class: 'form-button', onclick: submit}, 'Ok')
         ])
@@ -67,3 +71,4 @@ export default class New {
     }
   } // end constructor
 } // end class
+
