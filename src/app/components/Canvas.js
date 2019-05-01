@@ -53,7 +53,7 @@ export default class Canvas {
     const renderCanvasFromSvg = () => {
       const blob = new Blob(
         [this.c2s.getSerializedSvg()],
-        { type: 'image/svg+xml;charset=utf-8' }
+        { type: 'image/svg+xml' }
       );
       const img = new Image();
       img.onload = () => {
