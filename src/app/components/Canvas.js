@@ -13,7 +13,7 @@ export default class Canvas {
     };
 
     const isBG = (el) => {
-      return el && ['white', '#FFFFFF'].includes(el.getAttribute('fill'));
+      return el && el.getAttribute('fill') === '#FFFFFF';
     };
 
     const draw = (assign, method, ...args) => {
@@ -36,11 +36,10 @@ export default class Canvas {
 
     const clear = () => {
       const g = getGroup();
-      const newG = g.cloneNode(false);
-      g.parentElement.replaceChild(newG, g);
+      g.parentElement.replaceChild(g.cloneNode(false), g);
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      //c2s automatically fills in the white rectangle. Kind of obnoxious
-      clearCanvas();
+      draw(true, 'fillStyle', '#FFFFFF');
+      draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       return this;
     };
 
@@ -74,11 +73,9 @@ export default class Canvas {
     const undo = () => {
       const g = getGroup();
       const lastChild = g.lastChild;
-      if (lastChild === null) {
-        this.c2s.__currentElement = g;
-      } else {
+      if (lastChild !== g.firstChild) {
         lastChild.remove();
-        this.c2s.__currentElement = g.lastChild; // manually resetting the last point
+        this.c2s.__currentElement = g.lastChild || g; // manually resetting the last point
         renderCanvasFromSvg();
         return lastChild;
       }
