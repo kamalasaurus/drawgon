@@ -36,7 +36,9 @@ export default class Canvas {
 
     const clear = () => {
       const g = getGroup();
-      g.parentElement.replaceChild(g.cloneNode(false), g);
+      const newG = g.cloneNode(false);
+      g.parentElement.replaceChild(newG, g);
+      this.c2s.__currentElement = newG;
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       draw(true, 'fillStyle', '#FFFFFF');
       draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
