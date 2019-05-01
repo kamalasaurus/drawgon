@@ -65,6 +65,7 @@ self.addEventListener('activate', function(event) {
         }))
         .catch(function(err) { console.log('service worker on activate', err) });
       })
+      .then(function() { self.clients.claim() })
   );
 });
 
