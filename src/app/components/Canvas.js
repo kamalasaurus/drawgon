@@ -38,7 +38,6 @@ export default class Canvas {
       const g = getGroup();
       const newG = g.cloneNode(false);
       g.parentElement.replaceChild(newG, g);
-      this.c2s.__currentElement = newG;
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       //c2s automatically fills in the white rectangle. Kind of obnoxious
       clearCanvas();
@@ -75,7 +74,9 @@ export default class Canvas {
     const undo = () => {
       const g = getGroup();
       const lastChild = g.lastChild;
-      if (lastChild !== null || isBG(lastChild)) {
+      if (lastChild === null) {
+        this.c2s.__currentElement = g;
+      } else {
         lastChild.remove();
         this.c2s.__currentElement = g.lastChild; // manually resetting the last point
         renderCanvasFromSvg();
