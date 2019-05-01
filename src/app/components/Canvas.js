@@ -12,6 +12,10 @@ export default class Canvas {
       return this.c2s.getSvg().getElementsByTagName('g')[0];
     };
 
+    const isBG = (el) => {
+      return el && ['white', '#FFFFFF'].includes(el.getAttribute('fill'));
+    };
+
     const draw = (assign, method, ...args) => {
       if (assign) {
         this.context[method] = args[0];
@@ -70,7 +74,7 @@ export default class Canvas {
     const undo = () => {
       const g = getGroup();
       const lastChild = g.lastChild;
-      if (lastChild !== g.firstChild) {
+      if (lastChild !== null || isBG(lastChild)) {
         lastChild.remove();
         this.c2s.__currentElement = g.lastChild; // manually resetting the last point
         renderCanvasFromSvg();
@@ -95,9 +99,9 @@ export default class Canvas {
     const saveSVG = () => {
       const g = getGroup();
       const rect = g.firstChild;
-      rect.remove();
+      if (isBG(rect)) rect.remove();
       const serializedSvg = this.c2s.getSerializedSvg();
-      g.insertBefore(rect, g.firstChild);
+      if (isBG(rect)) g.insertBefore(rect, g.firstChild);
       return serializedSvg;
     };
 
