@@ -1,8 +1,8 @@
 {
-  "name": "webdraw",
+  "name": "drawgon",
   "version": "1.0.0",
   "description": "https://developer.github.com/v3/guides/getting-started/#oauth",
-  "repository": "https://github.com/kamalasaurus/webdraw",
+  "repository": "https://github.com/kamalasaurus/drawgon",
   "main": "main.js",
   "scripts": {
     "start": "live-server"

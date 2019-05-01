@@ -1,7 +1,7 @@
 {
   "manifest_version": "2",
-  "name": "webdraw",
-  "short_name": "webdraw",
+  "name": "drawgon",
+  "short_name": "drawgon",
   "version": "v1",
   "icons": [
     {
