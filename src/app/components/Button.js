@@ -13,7 +13,12 @@ export default class Button {
     this.view = (vnode) => {
 
       const img = [
-        m('img', {src: `./src/app/icons/controls/${imgname}`, class: 'icon'})
+        m('img', {
+          src: `./src/app/icons/controls/${imgname}`,
+          class: 'icon',
+          title: name,
+          alt: name
+        })
       ];
 
       const children = childNodes ? img.concat(childNodes) : img;
