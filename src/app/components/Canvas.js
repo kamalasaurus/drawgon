@@ -29,7 +29,7 @@ export default class Canvas {
 
     const clearCanvas = () => {
       this.context.clearRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      this.context.fillStyle = 'white';
+      this.context.fillStyle = '#FFFFFF';
       this.context.fillRect(0, 0, this.canvas.dom.width, this.canvas.dom.height);
       return this;
     };
