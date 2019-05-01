@@ -31,6 +31,9 @@ export default class Canvas {
     };
 
     const clear = () => {
+      const g = getGroup();
+      const newG = g.cloneNode(false);
+      g.parentElement.replaceChild(newG, g);
       draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       //c2s automatically fills in the white rectangle. Kind of obnoxious
       clearCanvas();
