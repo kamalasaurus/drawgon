@@ -60,26 +60,24 @@ export default function App(root) {
   //});
 
   m.route(root, '/', {
-    '/': Container( ctrl, 'layout', [
-      m(New, { ctrl })
+    '/': Container('layout', [
+      m(New, {ctrl})
     ]),
-    //'/draw': m(Container, { ctrl, name: 'layout', children: [
-      //m(new Canvas(ctrl)),
-      //m(Container, { ctrl, name: 'controls', children: [
-        //m(new Brush(ctrl, [
-          //m(new BrushPanel(ctrl))
-        //])),
-        //m(new Undo(ctrl)),
-        //m(new Redo(ctrl)),
-        //m(new Save(ctrl, [
-          //m(new SavePanel(ctrl))
-        //])),
-        //m(new Clear(ctrl))
-      //]})
-    //]})
+    '/draw': Container('layout', [
+      m(new Canvas(ctrl)),
+      Container('controls', [
+        m(new Brush(ctrl, [
+          m(new BrushPanel(ctrl))
+        ])),
+        m(new Undo(ctrl)),
+        m(new Redo(ctrl)),
+        m(new Save(ctrl, [
+          m(new SavePanel(ctrl))
+        ])),
+        m(new Clear(ctrl))
+      ])
+    ])
   });
-
-
 
 };
 
