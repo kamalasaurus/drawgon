@@ -6,6 +6,6 @@ import m from '../../../node_modules/mithril/mithril.js';
 export default function Container(name = '', children = []) {
   return {
     view: () => m(`div.container.${name}`, children)
-  }
-};
+  };
+}
 

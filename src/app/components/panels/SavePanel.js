@@ -4,22 +4,22 @@
 import m from '../../../../node_modules/mithril/mithril.js';
 import Container from '../Container.js';
 
-export default class SavePanel extends Container{
-  constructor(ctrl) {
+export default function SavePanel() {
 
-    const listOptions = () => {
-      return ['saveSVG', 'savePNG']
-        .map(name => {
-          return m(
-            'button', {
-              onclick: function() { ctrl[name](); }
-            },
-            name
-          );
-        });
-    };
+  const listOptions = (ctrl) => {
+    return ['saveSVG', 'savePNG']
+      .map(name => {
+        return m(
+          'button', {
+            onclick: () => ctrl[name]()
+          },
+          name
+        );
+      });
+  };
 
-    super('control-panel', listOptions());
-  }
+  return {
+    view: ({attrs: { ctrl }}) => Container('control-panel', listOptions(ctrl))
+  };
 }
 

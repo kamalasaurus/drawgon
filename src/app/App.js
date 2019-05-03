@@ -64,15 +64,15 @@ export default function App(root) {
       m(New, {ctrl})
     ]),
     '/draw': Container('layout', [
-      m(new Canvas(ctrl)),
+      //m(new Canvas(ctrl)),
       Container('controls', [
         m(new Brush(ctrl, [
-          m(new BrushPanel(ctrl))
+          m(BrushPanel, {ctrl})
         ])),
         m(new Undo(ctrl)),
         m(new Redo(ctrl)),
         m(new Save(ctrl, [
-          m(new SavePanel(ctrl))
+          m(SavePanel, {ctrl})
         ])),
         m(new Clear(ctrl))
       ])
