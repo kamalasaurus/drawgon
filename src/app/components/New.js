@@ -5,9 +5,7 @@ import m from '../../../node_modules/mithril/mithril.js';
 
 export default function New() {
 
-  let _ctrl = {};
-
-  const submit = (e) => {
+  const submit = (ctrl, e) => {
     e.preventDefault();
 
     const opts = Array
@@ -16,41 +14,38 @@ export default function New() {
         return obj[el.name] = el.value, obj;
       }, {});
 
-    _ctrl
+    ctrl
       .assignOptions(opts)
       .restoreDefaults();
 
     m.route.set('/draw');
   };
 
-  const makePaper = (a) => {
-    return m('option', {value: a, selected: (a === _ctrl.state.A)}, `A${a}`);
+  const makePaper = (A, a) => {
+    return m('option', {value: a, selected: (A === a)}, `A${a}`);
   };
 
-  const paperOptions = () => {
+  const paperOptions = (A) => {
     return m('div', [
-      m('select', {name: 'A'}, Array.from({length: 11}, (e, i) => makePaper(i)))
+      m('select', {name: 'A'}, Array.from({length: 11}, (e, i) => makePaper(A, i)))
     ]);
   };
 
-  const makeDpi = (dpi) => {
-    return m('option', {value: dpi, selected: (dpi === _ctrl.state.dpi)}, dpi);
+  const makeDpi = (dpi, choice) => {
+    return m('option', {value: choice, selected: (dpi === choice)}, choice);
   };
 
-  const dpiOptions = () => {
+  const dpiOptions = (dpi) => {
     return m('div', [
       m('select', {name: 'dpi'}, [
-        makeDpi(72),
-        makeDpi(300)
+        makeDpi(dpi, 72),
+        makeDpi(dpi, 300)
       ])
     ]);
   };
 
   return {
     view: ({attrs: { ctrl }}) => {
-
-      _ctrl = ctrl;
-
       return m(
         'form.new',
         [
@@ -66,13 +61,13 @@ export default function New() {
           m('div', [
             m('label.label', 'size')
           ]),
-          paperOptions(),
+          paperOptions(ctrl.state.A),
           m('div', [
             m('label.label', 'dpi'),
           ]),
-          dpiOptions(),
+          dpiOptions(ctrl.state.dpi),
           m('div.submit-container', [
-            m('button', { onclick: submit }, 'Ok')
+            m('button', { onclick: submit.bind(this, ctrl) }, 'Ok')
           ])
         ]
       );
