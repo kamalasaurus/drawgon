@@ -48,10 +48,10 @@ export default function Button() {
   ];
 
   return {
-    view: ({attrs: { name = '', children = [] }}) =>  m(
+    view: ({attrs: { name = '', children = [], onclick }}) =>  m(
       `div.button.${name}`, {
         class: active ? 'active': '',
-        onclick: () => active = !active
+        onclick: (onclick || () => active = !active)
       },
       active ? img(name) : img(name).concat(children)
     )
