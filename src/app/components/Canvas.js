@@ -1,3 +1,6 @@
+// Open Software License ("OSL") v 3.0
+// Copyright (c) 2019 kamalasaurus
+
 import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 import C2S from '../../../node_modules/canvas2svg/canvas2svg.js';

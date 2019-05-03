@@ -1,3 +1,5 @@
+![drawgon logo](android-chrome-512x512.png)
+
 # drawgon
 
 A easy to use web-hosted vector/raster drawing program.  The goal is to
@@ -7,6 +9,18 @@ to pair with physical art production.
 Checkout the hosted version here:
 
 [kamalasaurus.github.io/drawgon](kamalasaurus.github.io/drawgon)
+
+
+### Credits
+
+drawgon logo by [ltejedor](https://github.com/ltejedor)
+
+### License
+
+Open Software License ("OSL") v 3.0\
+Copyright (c) 2019 kamalasaurus
+
+### TODO
 
 Make code more canonical:
 

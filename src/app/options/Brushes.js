@@ -1,3 +1,6 @@
+// Open Software License ("OSL") v 3.0
+// Copyright (c) 2019 kamalasaurus
+
 export default {
   round(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
     draw(false, 'beginPath');

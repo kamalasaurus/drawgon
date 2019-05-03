@@ -8,6 +8,9 @@ import Canvas from './components/Canvas.js';
 import Brush from './components/controls/Brush.js';
 import Undo from './components/controls/Undo.js';
 import Redo from './components/controls/Redo.js';
+// Open Software License ("OSL") v 3.0
+// Copyright (c) 2019 kamalasaurus
+
 import Save from './components/controls/Save.js';
 import Clear from './components/controls/Clear.js';
 

@@ -1,3 +1,6 @@
+// Open Software License ("OSL") v 3.0
+// Copyright (c) 2019 kamalasaurus
+
 import download from '../../node_modules/downloadjs/download.js';
 
 export default class Controller {
