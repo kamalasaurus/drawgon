@@ -3,35 +3,57 @@
 
 import m from '../../../node_modules/mithril/mithril.js';
 
-export default class Button {
-  constructor(name, onclick, childNodes) {
+//export default class Button {
+  //constructor(name, onclick, childNodes) {
 
-    const classname = name ? ' '.concat(name) : '';
-    const imgname = name ? name.concat('.png') : '';
+    //const classname = name ? ' '.concat(name) : '';
+    //const imgname = name ? name.concat('.png') : '';
 
-    this.oninit = (vnode) => {
-      vnode.state.active = false;
-    };
+    //this.oninit = (vnode) => {
+      //vnode.state.active = false;
+    //};
 
-    this.view = (vnode) => {
+    //this.view = (vnode) => {
 
-      const img = [
-        m('img', {
-          src: `./src/app/icons/controls/${imgname}`,
-          class: 'icon',
-          title: name,
-          alt: name
-        })
-      ];
+      //const img = [
+        //m('img', {
+          //src: `./src/app/icons/controls/${imgname}`,
+          //class: 'icon',
+          //title: name,
+          //alt: name
+        //})
+      //];
 
-      const children = childNodes ? img.concat(childNodes) : img;
+      //const children = childNodes ? img.concat(childNodes) : img;
 
-      return m('div', {
-        class: `button${classname}`,
-        onclick: function(e) { onclick(vnode) }
-      }, children);
-    };
+      //return m('div', {
+        //class: `button${classname}`,
+        //onclick: function(e) { onclick(vnode) }
+      //}, children);
+    //};
 
-  }
+  //}
+//}
+
+export default function Button(name = '', children = []) {
+
+  let active = false;
+
+  const img = [
+    m('img.icon', {
+      src: `./src/app/icons/controls/${name.concat('.png')}`,
+      title: name,
+      alt: name
+    })
+  ];
+
+  return {
+    view: ({attrs: { ctrl }}) => m(
+      `div.button.${name}`,
+      {class: active ? 'active': ''}
+      onclick: () => active = !active,
+      active ? img : img.concat(children)
+    )
+  };
 }
 
