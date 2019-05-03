@@ -5,47 +5,52 @@ import m from '../../../node_modules/mithril/mithril.js';
 
 export default function New() {
 
-  const submit = (ctrl, e) => {
+  let _ctrl = {};
+
+  const submit = (e) => {
     e.preventDefault();
 
     const opts = Array
-      .from(form.dom.elements)
+      .from(e.target.closest('form').elements)
       .reduce((obj, el) => {
         return obj[el.name] = el.value, obj;
       }, {});
 
-    ctrl
+    _ctrl
       .assignOptions(opts)
       .restoreDefaults();
 
     m.route.set('/draw');
   };
 
-  const makePaper = (ctrl, a) => {
-    return m('option', {value: a, selected: (a === ctrl.state.A)}, `A${a}`);
+  const makePaper = (a) => {
+    return m('option', {value: a, selected: (a === _ctrl.state.A)}, `A${a}`);
   };
 
-  const paperOptions = (ctrl) => {
+  const paperOptions = () => {
     return m('div', [
-      m('select', {name: 'A'}, Array.from({length: 11}, (e, i) => makePaper(ctrl, i)))
+      m('select', {name: 'A'}, Array.from({length: 11}, (e, i) => makePaper(i)))
     ]);
   };
 
-  const makeDpi = (ctrl, dpi) => {
-    return m('option', {value: dpi, selected: (dpi === ctrl.state.dpi)}, dpi);
+  const makeDpi = (dpi) => {
+    return m('option', {value: dpi, selected: (dpi === _ctrl.state.dpi)}, dpi);
   };
 
-  const dpiOptions = (ctrl) => {
+  const dpiOptions = () => {
     return m('div', [
       m('select', {name: 'dpi'}, [
-        makeDpi(ctrl, 72),
-        makeDpi(ctrl, 300)
+        makeDpi(72),
+        makeDpi(300)
       ])
     ]);
   };
 
   return {
     view: ({attrs: { ctrl }}) => {
+
+      _ctrl = ctrl;
+
       return m(
         'form.new',
         [
@@ -61,13 +66,13 @@ export default function New() {
           m('div', [
             m('label.label', 'size')
           ]),
-          paperOptions(ctrl),
+          paperOptions(),
           m('div', [
             m('label.label', 'dpi'),
           ]),
-          dpiOptions(ctrl),
+          dpiOptions(),
           m('div.submit-container', [
-            m('button', { onclick: submit.bind(this, ctrl) }, 'Ok')
+            m('button', { onclick: submit }, 'Ok')
           ])
         ]
       );
