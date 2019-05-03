@@ -1,3 +1,6 @@
+// Open Software License ("OSL") v 3.0
+// Copyright (c) 2019 kamalasaurus
+
 import App from './src/app/App.js';
 
 void function() {

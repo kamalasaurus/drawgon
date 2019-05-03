@@ -1,4 +1,7 @@
-/*@import url('https://fonts.googleapis.com/css?family=Noto+Sans');*/
+/*
+ * Open Software License ("OSL") v 3.0
+ * Copyright (c) 2019 kamalasaurus
+ */
 
 html, body, div.layout {
   margin: 0;
@@ -6,7 +9,6 @@ html, body, div.layout {
   max-width: 100%;
   max-height: 100%;
   background-color: rgb(159, 179, 190);
-  /*font-family: 'Noto Sans', sans-serif;*/
   font-family: 'Monaco', 'Courier', monospace;
 }
 

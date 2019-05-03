@@ -1,3 +1,6 @@
+// Open Software License ("OSL") v 3.0
+// Copyright (c) 2019 kamalasaurus
+
 let cacheName = 'v1';
 
 let cacheFiles = [
