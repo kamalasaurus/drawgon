@@ -3,14 +3,9 @@
 
 import m from '../../../node_modules/mithril/mithril.js';
 
-export default class Container {
-  constructor(name, children) {
-
-    const classname = name ? ' '.concat(name) : '';
-
-    this.view = (vnode) => {
-      return m('div', {class: `container${classname}`}, children || []);
-    };
+export default function Container(ctrl, name = '', children = []) {
+  return {
+    view: () => m(`div.container.${name}`, children)
   }
-}
+};
 
