@@ -48,7 +48,7 @@ export default function Button(name = '', children = []) {
   ];
 
   return {
-    view: ({attrs: { ctrl }}) => m(
+    view: (/*{attrs: { ctrl }}*/) => m(
       `div.button.${name}`, {
         class: active ? 'active': '',
         onclick: () => active = !active

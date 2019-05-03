@@ -23,7 +23,12 @@ import Button from '../Button.js';
 
 export default function Brush() {
   return {
-    view: ({attrs: { children }}) => Button.bind(this, 'Brush', children)
+    view: ({attrs: { children }}) => m(
+      Button, {
+        name: 'Brush',
+        children: children
+      }
+    )
   };
 }
 
