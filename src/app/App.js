@@ -39,9 +39,29 @@ export default function App(root) {
     }
   });
 
+  //m.route(root, '/', {
+    //'/': (new Container('layout', [
+      //m(new New(ctrl))
+    //])),
+    //'/draw': (new Container('layout', [
+      //m(new Canvas(ctrl)),
+      //m(new Container('controls', [
+        //m(new Brush(ctrl, [
+          //m(new BrushPanel(ctrl))
+        //])),
+        //m(new Undo(ctrl)),
+        //m(new Redo(ctrl)),
+        //m(new Save(ctrl, [
+          //m(new SavePanel(ctrl))
+        //])),
+        //m(new Clear(ctrl))
+      //]))
+    //]))
+  //});
+
   m.route(root, '/', {
     '/': (new Container('layout', [
-      m(new New(ctrl))
+      m(New, { ctrl })
     ])),
     '/draw': (new Container('layout', [
       m(new Canvas(ctrl)),
@@ -58,5 +78,8 @@ export default function App(root) {
       ]))
     ]))
   });
+
+
+
 };
 
