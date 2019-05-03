@@ -69,11 +69,8 @@ export default function App(root) {
         name: 'controls',
         children: [
           m(Brush, { children: [
-            m('div')
-          ]})
-          //m(Brush, { children: [
-            //m(BrushPanel, {ctrl})
-          //]}),
+            m(BrushPanel, {ctrl})
+          ]}),
           //m(new Undo(ctrl)),
           //m(new Redo(ctrl)),
           //m(new Save(ctrl, [

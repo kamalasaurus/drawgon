@@ -35,11 +35,11 @@ import m from '../../../node_modules/mithril/mithril.js';
   //}
 //}
 
-export default function Button(name = '', children = []) {
+export default function Button() {
 
   let active = false;
 
-  const img = [
+  const img = (name) => [
     m('img.icon', {
       src: `./src/app/icons/controls/${name.concat('.png')}`,
       title: name,
@@ -48,12 +48,12 @@ export default function Button(name = '', children = []) {
   ];
 
   return {
-    view: (/*{attrs: { ctrl }}*/) => m(
+    view: ({attrs: { name = '', children = [] }}) =>  m(
       `div.button.${name}`, {
         class: active ? 'active': '',
         onclick: () => active = !active
       },
-      active ? img : img.concat(children)
+      active ? img(name) : img(name).concat(children)
     )
   };
 }

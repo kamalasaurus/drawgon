@@ -19,7 +19,12 @@ export default function SavePanel() {
   };
 
   return {
-    view: ({attrs: { ctrl }}) => Container('control-panel', listOptions(ctrl))
+    view: ({attrs: { ctrl }}) => m(
+      Container, {
+        name: 'control-panel',
+        children: listOptions(ctrl)
+      }
+    )
   };
 }
 
