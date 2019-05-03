@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "kamalasaurus",
-  "license": "ISC",
+  "license": "OSL-3.0",
   "dependencies": {
     "downloadjs": "https://github.com/kamalasaurus/download/tarball/master",
     "mithril": "https://github.com/kamalasaurus/mithril.js/tarball/next",
