@@ -6,7 +6,7 @@ import m from '../../../node_modules/mithril/mithril.js';
 export default class New {
   constructor(ctrl) {
 
-    const submit = (e) => {
+    const onclick = (e) => {
       e.preventDefault();
 
       const opts = Array
@@ -46,25 +46,24 @@ export default class New {
     };
 
     let form = m(
-      'form',
-      { class: 'new' },
+      'form.new',
       [
         m('div', [
-          m('label', {class: 'label'}, 'filename')
+          m('label.label', 'filename')
         ]),
         m('div', [
           m('input', {type: 'text', name: 'filename', placeholder: 'image', value: 'image'})
         ]),
         m('div', [
-          m('label', {class: 'label'}, 'size')
+          m('label.label', 'size')
         ]),
         paperOptions(),
         m('div', [
-          m('label', {class: 'label'}, 'dpi'),
+          m('label.label', 'dpi'),
         ]),
         dpiOptions(),
-        m('div', [
-          m('button', {class: 'form-button', onclick: submit}, 'Ok')
+        m('div.submit-container', [
+          m('button', { onclick }, 'Ok')
         ])
       ]
     ); // end form template

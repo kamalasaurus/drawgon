@@ -25,6 +25,17 @@ form.new > * {
   display: block;
 }
 
+form.new .submit-container {
+  text-align: right;
+}
+
+button {
+  height: 3em;
+  cursor: pointer;
+  padding: 0 1em;
+  display: inline-block;
+}
+
 canvas.surface {
   display: block;
   position: relative;
@@ -88,11 +99,5 @@ div.controls > div.button > div.control-panel {
 
 div.controls > div.button.active > div.control-panel {
   display: block;
-}
-
-div.controls > div.button > div.control-panel > button {
-  display: inline-block;
-  height: 3em;
-  cursor: pointer;
 }
 
