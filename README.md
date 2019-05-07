@@ -13,7 +13,9 @@ Checkout the hosted version here:
 
 ### Credits
 
-drawgon logo by [ltejedor](https://github.com/ltejedor)
+drawgon logo by [holistudio](https://github.com/holistudio)
+
+drawgon logo color inspiration by [ltejedor](https://github.com/ltejedor)
 
 ### License
 
