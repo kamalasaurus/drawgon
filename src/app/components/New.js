@@ -48,6 +48,9 @@ export default class New {
     let form = m(
       'form.new',
       [
+        m('div.title', [
+          m('object.logo', { type: 'image/svg+xml', data: './green-drawgon.svg' })
+        ]),
         m('div', [
           m('label.label', 'filename')
         ]),

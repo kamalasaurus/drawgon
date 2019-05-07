@@ -25,6 +25,14 @@ form.new > * {
   display: block;
 }
 
+form.new div.title {
+  text-align: center;
+}
+
+form.new object.logo {
+  display: inline-block;
+}
+
 form.new .submit-container {
   text-align: right;
 }
