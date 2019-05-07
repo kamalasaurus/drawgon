@@ -53,7 +53,8 @@ export default function Button() {
         class: active ? 'active': '',
         onclick: (onclick || (() => active = !active))
       },
-      active ? img(name) : img(name).concat(children)
+      img(name),
+      active && children
     )
   };
 }

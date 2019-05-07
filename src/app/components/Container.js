@@ -9,11 +9,11 @@ import m from '../../../node_modules/mithril/mithril.js';
 // Since I'm using a router which will have it's own root component for each
 // route, and then containers inside said root -- maybe it would make sense to
 // have a Root class that is independent of the Container just for root eleemnts?
-export default function Container(_name = '', _children = []) {
+export default function Container(_name = '', children = []) {
   return {
-    view: ({attrs: { name, children }}) => m(
+    view: ({attrs: { name }}) => m(
       `div.container.${name || _name}`,
-      children || _children
+      children
     )
   };
 }
