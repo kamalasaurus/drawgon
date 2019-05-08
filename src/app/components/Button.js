@@ -49,14 +49,13 @@ export default function Button() {
 
   return {
     view: ({attrs: { name = '', children = [], onclick }}) => {
+      console.log(children);
       return m(
         `div.button.${name}`, {
           class: active ? 'active': '',
-          onclick: (onclick || (() =>  active = !active))
+          onclick: (onclick || (() =>  { debugger; active = !active}))
         },
-        active ?
-          img(name).concat(children) :
-          img(name)
+        active ? img(name).concat(children) : img(name)
       )
     }
   };
@@ -66,7 +65,6 @@ export default function Button() {
   //view: ({attrs: { name = '', children = [], onclick }}) => {
 
     //let active = false;
-    //this.children = children;
 
     //const img = (name) => [
       //m('img.icon', {
@@ -79,10 +77,9 @@ export default function Button() {
     //return m(
       //`div.button.${name}`, {
         //class: active ? 'active': '',
-        //onclick: (onclick || (() => { debugger; active = !active; }))
+        //onclick: (onclick || (() => {debugger; active = !active }))
       //},
-      //img(name),
-      //active && this.children
+      //active ? img(name).concat(children) : img(name)
     //);
   //}
 //}
