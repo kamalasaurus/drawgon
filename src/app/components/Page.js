@@ -3,12 +3,9 @@
 
 import m from '../../../node_modules/mithril/mithril.js';
 
-export default function Container() {
+export default function Page(children = []) {
   return {
-    view: ({attrs: { name = '', children = [] }}) => m(
-      `div.container.${name}`,
-      children
-    )
+    view: () => m('div.container.layout', children)
   };
 }
 

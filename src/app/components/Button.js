@@ -48,14 +48,44 @@ export default function Button() {
   ];
 
   return {
-    view: ({attrs: { name = '', children = [], onclick }}) =>  m(
-      `div.button.${name}`, {
-        class: active ? 'active': '',
-        onclick: (onclick || (() => active = !active))
-      },
-      img(name),
-      active && children
-    )
+    view: ({attrs: { name = '', children = [], onclick }}) => {
+      return m(
+        `div.button.${name}`, {
+          class: active ? 'active': '',
+          onclick: (onclick || (() =>  active = !active))
+        },
+        active ?
+          img(name).concat(children) :
+          img(name)
+      )
+    }
   };
 }
+
+//const Button = {
+  //view: ({attrs: { name = '', children = [], onclick }}) => {
+
+    //let active = false;
+    //this.children = children;
+
+    //const img = (name) => [
+      //m('img.icon', {
+        //src: `./src/app/icons/controls/${name.concat('.png')}`,
+        //title: name,
+        //alt: name
+      //})
+    //];
+
+    //return m(
+      //`div.button.${name}`, {
+        //class: active ? 'active': '',
+        //onclick: (onclick || (() => { debugger; active = !active; }))
+      //},
+      //img(name),
+      //active && this.children
+    //);
+  //}
+//}
+
+//export default Button;
 

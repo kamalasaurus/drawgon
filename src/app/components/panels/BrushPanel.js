@@ -23,8 +23,7 @@ export default function BrushPanel() {
   return {
     view: ({attrs: { ctrl }}) => m(
       Container,
-      {name: 'control-panel'},
-      listBrushes(ctrl)
+      {name: 'control-panel', children: listBrushes(ctrl)}
     )
   };
 }
