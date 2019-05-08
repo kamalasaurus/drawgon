@@ -50,13 +50,13 @@ export default function New() {
         'form.new',
         [
           m('div.title', [
-            m('object.logo', { type: 'image/svg+xml', data: './green-drawgon.svg' })
+            m('object.logo', { type: 'image/svg+xml', data: './logo.svg' })
           ]),
           m('div', [
             m('label.label', 'filename')
           ]),
           m('div', [
-            m('input', {type: 'text', name: 'filename', placeholder: 'image', value: 'image'})
+            m('input', {type: 'text', autofocus: true, name: 'filename', placeholder: 'image', value: 'image'})
           ]),
           m('div', [
             m('label.label', 'size')

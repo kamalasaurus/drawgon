@@ -27,10 +27,17 @@ form.new > * {
 
 form.new div.title {
   text-align: center;
+  margin-bottom: 15px;
 }
 
 form.new object.logo {
   display: inline-block;
+}
+
+form.new input, form.new select {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  font-size: 24px;
 }
 
 form.new .submit-container {
