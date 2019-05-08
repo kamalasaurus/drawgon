@@ -19,13 +19,13 @@ export default class Canvas {
       return el && el.getAttribute('fill') === '#FFFFFF';
     };
 
-    const draw = (assign, method, ...args) => {
-      if (assign) {
-        this.context[method] = args[0];
-        this.c2s[method] = args[0];
-      } else {
+    const draw = (method, ...args) => {
+      if (typeof this.context[method] === 'function') {
         this.context[method].apply(this.context, args);
         this.c2s[method].apply(this.c2s, args);
+      } else {
+        this.context[method] = args[0];
+        this.c2s[method] = args[0];
       }
       return this;
     };
@@ -42,9 +42,9 @@ export default class Canvas {
       const newG = g.cloneNode(false);
       g.parentElement.replaceChild(newG, g);
       this.c2s.__currentElement = newG;
-      draw(false, 'clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
-      draw(true, 'fillStyle', '#FFFFFF');
-      draw(false, 'fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      draw('clearRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
+      draw('fillStyle', '#FFFFFF');
+      draw('fillRect', 0, 0, this.canvas.dom.width, this.canvas.dom.height);
       return this;
     };
 
