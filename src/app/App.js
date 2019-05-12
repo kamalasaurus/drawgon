@@ -2,6 +2,7 @@
 // Copyright (c) 2019 kamalasaurus
 
 import m from '../../node_modules/mithril/mithril.js';
+import h from '../../node_modules/hyperscript/index.js';
 
 import Controller from './Controller.js';
 import Container from './components/Container.js';
@@ -19,6 +20,8 @@ import BrushPanel from './components/panels/BrushPanel.js';
 import SavePanel from './components/panels/SavePanel.js';
 
 export default function App(root) {
+
+  console.log(h);
 
   const ctrl = new Controller({});
 

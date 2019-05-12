@@ -1,4 +1,4 @@
-import split form '../browser-split/index.js'
+import split from '../browser-split/index.js'
 import ClassList from '../class-list/index.js'
 // import HtmlElement from '../html-element/index.js'
 
