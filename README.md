@@ -8,7 +8,7 @@ to pair with physical art production.
 
 Checkout the hosted version here:
 
-[kamalasaurus.github.io/drawgon](kamalasaurus.github.io/drawgon)
+[kamalasaurus.github.io/drawgon](https://kamalasaurus.github.io/drawgon)
 
 
 ### Credits
@@ -23,6 +23,20 @@ Open Software License ("OSL") v 3.0\
 Copyright (c) 2019 kamalasaurus
 
 ### TODO
+
+
+Monkey-patch:
+hyperscript\
+browser-split\
+class-list\
+
+Manual routing:
+https://medium.com/@bryanmanuele/how-i-implemented-my-own-spa-routing-system-in-vanilla-js-49942e3c4573\
+
+Event bus for redraw
+
+
+
 
 Make code more canonical:
 
