@@ -58,13 +58,22 @@ export default function App(root) {
       //]))
     //]))
   //});
+  //
+  function ReNew() {
+    return React.createElement('div', null, 'home')
+  }
 
-  const Route = React.createFactory(Router.Route);
+  function ReDraw() {
+    return React.createElement('div', null, 'draw')
+  }
 
-  React.render((
-    React.createElement(Router, {location: "history"},
-      Route({path: '/', handler: New}),
-      Route({path: '/draw', handler: Draw})
+  const Router = React.createFactory(ReactRouterDOM.BrowserRouter);
+  const Route = React.createFactory(ReactRouterDOM.Route);
+
+  ReactDOM.render((
+    React.createElement(Router, null,
+      Route({path: '/', component: React.createElement('div', null, 'home')}),
+      Route({path: '/draw', component: React.createElement('div', null, 'draw')})
     )
   ), root)
 
