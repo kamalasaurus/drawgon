@@ -26,9 +26,9 @@ Copyright (c) 2019 kamalasaurus
 
 
 Monkey-patch:
-hyperscript\
-browser-split\
-class-list\
+~hyperscript~\
+~browser-split~\
+~class-list~\
 
 Manual routing:
 https://medium.com/@bryanmanuele/how-i-implemented-my-own-spa-routing-system-in-vanilla-js-49942e3c4573\
