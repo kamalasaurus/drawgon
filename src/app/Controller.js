@@ -99,7 +99,6 @@ export default class Controller {
       // cast form type from string to number for following fields
       A = +opts.A;
       dpi = +opts.dpi;
-      this.restoreDefaults();
       return this;
     };
 

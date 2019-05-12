@@ -21,8 +21,6 @@ import SavePanel from './components/panels/SavePanel.js';
 
 export default function App(root) {
 
-  console.log(h);
-
   const ctrl = new Controller({});
 
   window.addEventListener('keydown', function(e) {
