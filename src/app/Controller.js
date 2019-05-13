@@ -2,6 +2,7 @@
 // Copyright (c) 2019 kamalasaurus
 
 import download from '../../node_modules/downloadjs/download.js';
+import Brushes from './options/Brushes.js';
 
 export default class Controller {
   constructor({filename = 'image', A = 4, dpi = 300}) {
@@ -38,8 +39,27 @@ export default class Controller {
       return true;
     };
 
+    //TODO: figure out mithril rerendering issues and don't do this manually
+    const appendBrushTemp = (brush) => {
+      this.setBrush(brush.name);
+      let bPanel = document.querySelector('.Brush > .control-panel');
+      bPanel.innerHTML = '';
+      Object
+        .keys(state.userBrushes)
+        .map(name => m(
+          'button', {
+            onclick: (() => this.setBrush(name))
+          },
+          name
+        ))
+        .forEach(el => (
+          bPanel.appendChild(el)
+        ));
+    };
+
     let state = {
-      undoHistory: []
+      undoHistory: [],
+      userBrushes: Brushes
     };
 
     let canvas = null;
@@ -47,7 +67,14 @@ export default class Controller {
     // public
 
     this.addBrush = (newBrush) => {
-      debugger;
+      let brush;
+      //TODO: run the brush in a worker to make it secure
+      //from potentially toxic newBrushes
+      try { brush = eval(newBrush) }
+      catch(error) { alert(error) }
+      state.userBrushes = Object.assign({}, {[brush.name]: brush}, Brushes);
+      appendBrushTemp(brush);
+      return this;
     };
 
     this.undo = () => {

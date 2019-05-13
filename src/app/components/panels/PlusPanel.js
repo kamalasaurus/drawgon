@@ -10,11 +10,11 @@ export default class PlusPanel extends Container{
     const addBrush = () => {
       return [
         m('textarea.add-brush', {
-          cols: 50,
+          cols: 52,
           rows: 10,
           onclick: ((e) => e.stopPropagation())
         }, `
-        round(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
+        newBrush(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
           draw('beginPath');
           draw('moveTo', pX, pY);
           draw('lineTo', x, y);
@@ -24,7 +24,15 @@ export default class PlusPanel extends Container{
         }`),
         m('br'),
         m('button.add-brush', {
-          onclick: ((e) => ctrl.addBrush(e.target.previousSibling.previousSibling.value.trim()))
+          onclick: ((e) => ctrl
+             .addBrush('(function ' + e
+              .target
+              .previousSibling
+              .previousSibling
+              .value
+              .trim() + ')'
+            )
+          )
         }, 'addBrush')
       ]
     };

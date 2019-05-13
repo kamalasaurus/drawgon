@@ -5,8 +5,6 @@ import m from '../../../node_modules/mithril/mithril.js';
 import Pressure from '../../../node_modules/pressure/dist/pressure.js';
 import C2S from '../../../node_modules/canvas2svg/canvas2svg.js';
 
-import Brushes from '../options/Brushes.js';
-
 export default class Canvas {
   constructor(ctrl) {
 
@@ -155,7 +153,7 @@ export default class Canvas {
       };
 
       // draw line from previous position to current position
-      Brushes[ctrl.state.brush](draw.bind(this), data);
+      ctrl.state.userBrushes[ctrl.state.brush](draw.bind(this), data);
 
       // set current value for the next previous value
       this.prevX = x;
