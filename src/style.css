@@ -29,6 +29,10 @@ form.new div.title {
   text-align: center;
 }
 
+form.new select {
+  font-size: 12px;
+}
+
 form.new object.logo {
   display: inline-block;
 }
