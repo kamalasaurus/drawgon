@@ -3,7 +3,7 @@
 
 import Button from '../Button.js';
 
-export default class Brush extends Button {
+export default class Plus extends Button {
   constructor(ctrl, children) {
     const onclick = (vnode) => {
       vnode.state.active = vnode.dom.classList.contains('active');
@@ -16,7 +16,7 @@ export default class Brush extends Button {
       return this;
     }
 
-    super('Brush', onclick, children);
+    super('Plus', onclick, children);
   }
 }
 

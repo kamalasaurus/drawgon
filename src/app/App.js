@@ -9,6 +9,7 @@ import New from './components/New.js';
 import Canvas from './components/Canvas.js';
 
 import Brush from './components/controls/Brush.js';
+import Plus from './components/controls/Plus.js';
 import Undo from './components/controls/Undo.js';
 import Redo from './components/controls/Redo.js';
 
