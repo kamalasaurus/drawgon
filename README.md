@@ -45,6 +45,11 @@ brush you make for predictable outcomes!
 
 Happy drawing!  🌈✨✨⭐️
 
+### Troubleshooting
+
+It's a Progressive Web App, so if things get too wonky, clear your
+caches and get refresh the page!
+
 ### Credits
 
 drawgon logo by [holistudio](https://github.com/holistudio)\
