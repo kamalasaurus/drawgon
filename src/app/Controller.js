@@ -46,12 +46,12 @@ export default class Controller {
       bPanel.innerHTML = '';
       Object
         .keys(state.userBrushes)
-        .map(name => m(
-          'button', {
-            onclick: (() => this.setBrush(name))
-          },
-          name
-        ))
+        .map(name => {
+          let b = document.createElement('button');
+          b.text = name;
+          b.onclick = (() => this.setBrush(name));
+          return b;
+        })
         .forEach(el => (
           bPanel.appendChild(el)
         ));
