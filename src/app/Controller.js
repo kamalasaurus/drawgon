@@ -46,6 +46,10 @@ export default class Controller {
 
     // public
 
+    this.addBrush = (newBrush) => {
+      debugger;
+    };
+
     this.undo = () => {
       const lastChild = canvas.undo();
       if (lastChild) state.undoHistory.push(lastChild);

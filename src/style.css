@@ -113,3 +113,8 @@ div.controls > div.button.active > div.control-panel {
   display: block;
 }
 
+div.controls > div.button > div.control-panel > textarea.add-button {
+  width: 320px;
+  height: 145px;
+}
+

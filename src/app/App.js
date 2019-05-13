@@ -51,9 +51,9 @@ export default function App(root) {
         m(new Brush(ctrl, [
           m(new BrushPanel(ctrl))
         ])),
-        m(new Plus(ctrl), [
+        m(new Plus(ctrl, [
           m(new PlusPanel(ctrl))
-        ]),
+        ])),
         m(new Undo(ctrl)),
         m(new Redo(ctrl)),
         m(new Save(ctrl, [

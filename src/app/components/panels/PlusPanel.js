@@ -8,7 +8,12 @@ export default class PlusPanel extends Container{
   constructor(ctrl) {
 
     const addBrush = () => {
-      return m('div', {contenteditable: true}, `
+      return [
+        m('textarea.add-brush', {
+          cols: 50,
+          rows: 10,
+          onclick: ((e) => e.stopPropagation())
+        }, `
         round(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
           draw('beginPath');
           draw('moveTo', pX, pY);
@@ -16,8 +21,12 @@ export default class PlusPanel extends Container{
           draw('closePath');
           draw('lineWidth', lineWidth * force);
           draw('stroke');
-        }
-      `);
+        }`),
+        m('br'),
+        m('button.add-brush', {
+          onclick: ((e) => ctrl.addBrush(e.target.previousSibling.previousSibling.value))
+        }, 'addBrush')
+      ]
     };
 
     super('control-panel', addBrush());
