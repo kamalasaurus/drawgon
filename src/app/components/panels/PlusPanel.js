@@ -24,7 +24,7 @@ export default class PlusPanel extends Container{
         }`),
         m('br'),
         m('button.add-brush', {
-          onclick: ((e) => ctrl.addBrush(e.target.previousSibling.previousSibling.value))
+          onclick: ((e) => ctrl.addBrush(e.target.previousSibling.previousSibling.value.trim()))
         }, 'addBrush')
       ]
     };
