@@ -48,7 +48,7 @@ export default class Controller {
         .keys(state.userBrushes)
         .map(name => {
           let b = document.createElement('button');
-          b.text = name;
+          b.innerHTML = name;
           b.onclick = (() => this.setBrush(name));
           return b;
         })
