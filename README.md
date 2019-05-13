@@ -14,7 +14,7 @@ Checkout the hosted version here:
 
 The fun part of drawgon is the ability to create your own procedural
 brushes!  Simply click the `+` button and create your own brush
-function. Example:\
+function. Example:
 
 ```
 newBrush(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {
@@ -60,7 +60,7 @@ drawgon logo color inspiration by [ltejedor](https://github.com/ltejedor)
 To build, just `git clone`, `rm -rf node_modules`, `npm install`.
 `node_modules` are included because the app is hosted on github pages
 and doesn't perform a separate deployment.  Check out a new branch from
-master and then open a PR requesting to merge!\
+master and then open a PR requesting to merge!
 
 Help wanted:  The pattern I'm using with mithril isn't great.  It's
 making me have to do manual DOM manipulation to keep things dynamic.  If
