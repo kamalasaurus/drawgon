@@ -10,6 +10,7 @@ html, body, div.layout {
   max-height: 100%;
   background-color: rgb(159, 179, 190);
   font-family: 'Monaco', 'Courier', monospace;
+  overflow: hidden;
 }
 
 form.new {
