@@ -3,13 +3,21 @@
  * Copyright (c) 2019 kamalasaurus
  */
 
-html, body, div.layout {
+html, body {
   margin: 0;
   padding: 0;
   max-width: 100%;
   max-height: 100%;
+  position: fixed;
   background-color: rgb(159, 179, 190);
   font-family: 'Monaco', 'Courier', monospace;
+}
+
+div.layout {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 form.new {
