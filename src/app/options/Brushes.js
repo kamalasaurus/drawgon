@@ -7,7 +7,7 @@ export default {
     draw('moveTo', pX, pY);
     draw('lineTo', x, y);
     draw('closePath');
-    draw('lineWidth', lineWidth * force);
+    draw('lineWidth', lineWidth * 5/3 * force); // setting default lineWidth to 3
     draw('stroke');
   },
   square(draw, {pX, pY, x, y, force, lineWidth, tiltX, tiltY}) {

@@ -14,7 +14,7 @@ export default class Controller {
 
     const DEFAULTS = {
       brush: 'round',
-      lineWidth: 5
+      lineWidth: 3
     };
 
     // runs a couple pixels large from what the internet round numbers are
